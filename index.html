@@ -106,11 +106,25 @@
       align-items: center;
     }
 
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0px);
+      }
+      50% {
+        transform: translateY(-8px);
+      }
+    }
+
     .panel {
       border: 3px solid var(--line);
       background: linear-gradient(180deg, var(--card), #10264b);
       box-shadow: 0 10px 0 #0a1730;
       padding: 1.2rem;
+      animation: float 4s ease-in-out infinite;
+    }
+
+    .panel:nth-child(2) {
+      animation-delay: 0.5s;
     }
 
     .hero h1 {
@@ -202,6 +216,15 @@
       background: linear-gradient(180deg, var(--card), var(--card-2));
       box-shadow: 0 7px 0 #0f2245;
       padding: 1rem;
+      animation: float 4.5s ease-in-out infinite;
+    }
+
+    .card:nth-child(2) {
+      animation-delay: 0.3s;
+    }
+
+    .card:nth-child(3) {
+      animation-delay: 0.6s;
     }
 
     .card h3 {
@@ -337,6 +360,96 @@
       transform: translateY(-2px);
     }
 
+    .splash-screen {
+      position: fixed;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(180deg, #0a0f1f, #071225);
+      z-index: 9999;
+      animation: screenFadeOut 0.6s ease 2.7s forwards;
+      overflow: hidden;
+    }
+
+    .splash-bar {
+      position: absolute;
+      width: 100%;
+      height: 50%;
+      background: #000000;
+      z-index: 10000;
+    }
+
+    .splash-bar-top {
+      top: 0;
+      animation: barOpenTop 1s cubic-bezier(0.34, 1.56, 0.64, 1) 0.3s forwards;
+    }
+
+    .splash-bar-bottom {
+      bottom: 0;
+      animation: barOpenBottom 1s cubic-bezier(0.34, 1.56, 0.64, 1) 0.3s forwards;
+    }
+
+    .splash-logo {
+      width: 120px;
+      height: 120px;
+      position: relative;
+      z-index: 10001;
+      animation: logoScale 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) 1.2s forwards, logoPulse 1.2s ease 2s forwards;
+      opacity: 0;
+    }
+
+    @keyframes barOpenTop {
+      from {
+        transform: translateY(0);
+      }
+      to {
+        transform: translateY(-100%);
+      }
+    }
+
+    @keyframes barOpenBottom {
+      from {
+        transform: translateY(0);
+      }
+      to {
+        transform: translateY(100%);
+      }
+    }
+
+    @keyframes logoScale {
+      from {
+        transform: scale(0.8);
+        opacity: 0;
+      }
+      to {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    @keyframes logoPulse {
+      0% {
+        opacity: 1;
+        transform: scale(1);
+      }
+      100% {
+        opacity: 0.9;
+        transform: scale(1.05);
+      }
+    }
+
+    @keyframes screenFadeOut {
+      from {
+        opacity: 1;
+        visibility: visible;
+      }
+      to {
+        opacity: 0;
+        visibility: hidden;
+      }
+    }
+
     .fade {
       opacity: 0;
       transform: translateY(14px);
@@ -385,6 +498,11 @@
   </style>
 </head>
 <body>
+  <div class="splash-screen">
+    <div class="splash-bar splash-bar-top"></div>
+    <div class="splash-bar splash-bar-bottom"></div>
+    <img class="splash-logo" src="icon.png" alt="Roblox Studio" />
+  </div>
   <header class="topbar">
     <div class="wrap nav">
       <a class="brand" href="#top">Ineti<span>xus</span></a>
@@ -403,13 +521,13 @@
         <h1>Inetixus<br>Roblox Developer</h1>
         <p class="tagline">
           I build clean, responsive Roblox GUIs and solid game scripts.
-          I’m currently a starter in Building and VFX, and leveling up fast.
+          I offer very cheap rates and I’m currently a starter in Building and VFX, leveling up fast.
         </p>
         <div class="badges">
           <span class="badge">GUI Specialist</span>
           <span class="badge">Scripting</span>
           <span class="badge">Reliable</span>
-          <span class="badge">Affordable</span>
+          <span class="badge">Very Cheap Rates</span>
         </div>
         <div class="cta-row">
           <a class="btn" href="#contact">Hire Me</a>
@@ -427,6 +545,9 @@
         </p>
         <p style="margin:0.3rem 0;color:var(--muted);">
           VFX: Starter
+        </p>
+        <p style="margin:0.3rem 0;color:var(--muted);">
+          Pricing: Very cheap, starter-friendly rates
         </p>
         <p style="margin:0.6rem 0 0;color:var(--muted);">
           Payment accepted:
@@ -459,7 +580,7 @@
 
     <section id="services">
       <h2 class="section-title fade">Services & Pricing</h2>
-      <p class="service-intro fade">Pick a package based on your project scope. Final quote depends on feature complexity and deadline.</p>
+      <p class="service-intro fade">I focus on very cheap pricing so small and growing Roblox projects can afford quality GUI and scripting work.</p>
       <div class="grid-3">
         <article class="card fade">
           <h3>Basic GUI Package</h3>
@@ -468,7 +589,6 @@
             <li>1 complete game-matching GUI</li>
             <li>Responsive scaling setup</li>
             <li>Basic transitions and polish</li>
-            <li>1 revision round included</li>
           </ul>
           <a class="btn package-cta" href="#contact">Hire Me</a>
         </article>
@@ -478,8 +598,6 @@
           <ul class="package-list">
             <li>Custom GUI flow with multiple pages</li>
             <li>Feature scripting (shop, stats, or inventory)</li>
-            <li>Bug testing and cleanup</li>
-            <li>2 revision rounds included</li>
           </ul>
           <a class="btn package-cta" href="#contact">Hire Me</a>
         </article>
@@ -490,12 +608,11 @@
             <li>Complete GUI + gameplay systems</li>
             <li>Structured modules and clean organization</li>
             <li>Performance and UX improvements</li>
-            <li>3 revision rounds included</li>
           </ul>
           <a class="btn package-cta" href="#contact">Hire Me</a>
         </article>
       </div>
-      <p class="small-note fade">More advanced GUIs and systems can be discussed in DMs.</p>
+      <p class="small-note fade">More advanced GUIs and systems can be discussed in DMs, still with budget-friendly pricing.</p>
     </section>
 
     <section>
@@ -506,8 +623,8 @@
           <p>I keep updates clear and frequent so you always know project progress.</p>
         </article>
         <article class="card fade">
-          <h3>Affordable Deals</h3>
-          <p>I keep pricing budget-friendly while still delivering quality work.</p>
+          <h3>Very Cheap Deals</h3>
+          <p>I keep my prices very low while still delivering quality work for your game.</p>
         </article>
         <article class="card fade">
           <h3>Growth Mindset</h3>
