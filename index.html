@@ -3,6 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#071225" />
+  <link rel="icon" href="logo.png" />
+  <meta property="og:title" content="Inetixus | Roblox Developer" />
+  <meta property="og:description" content="Roblox GUI & scripting developer portfolio." />
+  <meta property="og:image" content="logo.png" />
+  <meta property="og:type" content="website" />
   <title>Inetixus | Roblox Developer Portfolio</title>
   <meta name="description" content="Portfolio of Inetixus, Roblox GUI & Scripting Developer." />
   <style>
@@ -24,6 +30,7 @@
     html, body {
       margin: 0;
       padding: 0;
+      cursor: default;
       color: var(--text);
       background:
         radial-gradient(circle at 10% 10%, #1a3570 0%, transparent 35%),
@@ -31,6 +38,34 @@
         linear-gradient(180deg, var(--bg), var(--bg-2));
       font-family: "Trebuchet MS", "Verdana", sans-serif;
       scroll-behavior: smooth;
+    }
+
+    .custom-cursor {
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: 88px;
+      height: 88px;
+      pointer-events: none;
+      z-index: 11000;
+      opacity: 0;
+      transform: translate(-26px, -26px);
+      background-image: url("idle.png");
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: contain;
+      transition: opacity 80ms linear;
+    }
+
+    .custom-cursor.visible {
+      opacity: 1;
+    }
+
+    @media (hover: hover) and (pointer: fine) {
+      .custom-cursor-ready,
+      .custom-cursor-ready * {
+        cursor: none !important;
+      }
     }
 
     body::before {
@@ -56,6 +91,11 @@
       background: #0a1730cc;
       backdrop-filter: blur(6px);
       border-bottom: 2px solid var(--line);
+      transition: box-shadow 200ms ease;
+    }
+
+    .topbar.scrolled {
+      box-shadow: 0 6px 18px #00000055;
     }
 
     .nav {
@@ -98,6 +138,61 @@
       transform: translateY(-2px);
     }
 
+    .nav-links .secret-tag {
+      position: relative;
+      overflow: hidden;
+      border-color: #a7c8ff;
+      background: linear-gradient(180deg, #4c95ff, #2f73e6);
+      box-shadow: 0 3px 0 #1f4f9f;
+      color: #fff;
+      font-weight: 900;
+    }
+
+    .nav-links .secret-tag::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      left: -120%;
+      width: 70%;
+      height: 100%;
+      background: linear-gradient(105deg, transparent 15%, #ffffffcc 50%, transparent 85%);
+      transform: skewX(-22deg) translateX(0);
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .nav-links .secret-tag:hover {
+      background: linear-gradient(180deg, #68a8ff, #3f85ff);
+      box-shadow: 0 3px 0 #1f4f9f, 0 0 14px #89beff99;
+      animation: tagGlow 650ms ease;
+    }
+
+    .nav-links .secret-tag:hover::after {
+      opacity: 1;
+      animation: tagShine 650ms ease;
+    }
+
+    @keyframes tagShine {
+      from {
+        transform: skewX(-22deg) translateX(0);
+      }
+      to {
+        transform: skewX(-22deg) translateX(320%);
+      }
+    }
+
+    @keyframes tagGlow {
+      0% {
+        filter: brightness(1);
+      }
+      50% {
+        filter: brightness(1.18);
+      }
+      100% {
+        filter: brightness(1.06);
+      }
+    }
+
     .hero {
       padding: 4rem 0 3rem;
       display: grid;
@@ -118,7 +213,9 @@
     .panel {
       border: 3px solid var(--line);
       background: linear-gradient(180deg, var(--card), #10264b);
-      box-shadow: 0 10px 0 #0a1730;
+      box-shadow:
+        0 10px 0 #0a1730,
+        0 0 25px #2f7dff22;
       padding: 1.2rem;
       animation: float 4s ease-in-out infinite;
     }
@@ -217,6 +314,14 @@
       box-shadow: 0 7px 0 #0f2245;
       padding: 1rem;
       animation: float 4.5s ease-in-out infinite;
+      transition: transform 160ms ease, box-shadow 160ms ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow:
+        0 11px 0 #0f2245,
+        0 0 18px #2f7dff33;
     }
 
     .card:nth-child(2) {
@@ -343,8 +448,12 @@
       display: flex;
       width: max-content;
       gap: 0.9rem;
-      animation: reviewsMarquee 16s linear infinite;
+      animation: reviewsMarquee 22s linear infinite;
       padding-left: 0.9rem;
+    }
+
+    .reviews-track:hover {
+      animation-play-state: paused;
     }
 
     .review-card {
@@ -397,6 +506,13 @@
     .contact {
       text-align: center;
       padding-bottom: 3rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .contact > * {
+      position: relative;
+      z-index: 2;
     }
 
     .contact p {
@@ -440,6 +556,45 @@
       transform: translateY(-2px);
     }
 
+    .contact-plane {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 96px;
+      height: auto;
+      pointer-events: none;
+      z-index: 4;
+      opacity: 1;
+      transform: translate(-120px, -120px);
+      will-change: transform, opacity;
+      filter: drop-shadow(0 0 10px #ffffffcc);
+    }
+
+    .plane-trail {
+      position: absolute;
+      width: 42px;
+      height: 5px;
+      border-radius: 999px;
+      pointer-events: none;
+      z-index: 3;
+      opacity: 0.9;
+      transform: translate(-100%, -50%) rotate(var(--trail-angle, 0deg));
+      transform-origin: 100% 50%;
+      background: linear-gradient(90deg, #ffffffee 0%, #ffffffaa 45%, #ffffff00 100%);
+      animation: trailFade 1050ms ease-out forwards;
+    }
+
+    @keyframes trailFade {
+      from {
+        opacity: 0.9;
+        filter: blur(0px);
+      }
+      to {
+        opacity: 0;
+        filter: blur(2px);
+      }
+    }
+
     .splash-screen {
       position: fixed;
       inset: 0;
@@ -448,7 +603,7 @@
       justify-content: center;
       background: linear-gradient(180deg, #0a0f1f, #071225);
       z-index: 9999;
-      animation: screenFadeOut 0.6s ease 2.7s forwards;
+      animation: screenFadeOut 0.6s ease 1.2s forwards;
       overflow: hidden;
     }
 
@@ -475,8 +630,37 @@
       height: 120px;
       position: relative;
       z-index: 10001;
-      animation: logoScale 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) 1.2s forwards, logoPulse 1.2s ease 2s forwards;
+      animation: logoScale 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) 0.25s forwards, logoPulse 1.1s ease 1.05s forwards;
       opacity: 0;
+    }
+
+    .tag-transition {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0;
+      z-index: 10003;
+      background:
+        radial-gradient(circle at 50% 50%, #9f58ff 0%, #6934b5 40%, #2a124f 100%);
+      transform: scale(1.08);
+    }
+
+    body.tag-shift .tag-transition {
+      animation: tagShift 620ms ease forwards;
+    }
+
+    @keyframes tagShift {
+      0% {
+        opacity: 0;
+        transform: scale(1.08);
+      }
+      35% {
+        opacity: 0.5;
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
     }
 
     @keyframes barOpenTop {
@@ -550,12 +734,113 @@
       background: #0a1730;
     }
 
+    .brick-floor {
+      --brick-row-height: 56px;
+      --brick-tile-width: calc(var(--brick-row-height) * 2.0896);
+      --top-row-bricks: 5;
+      --top-row-width: calc(var(--brick-tile-width) * var(--top-row-bricks));
+      --top-row-left: calc(var(--brick-tile-width) * 0.75);
+      height: calc(var(--brick-row-height) * 1.65);
+      width: 100%;
+      position: relative;
+      z-index: 1;
+      background-image: url("brick.png");
+      background-repeat: repeat-x;
+      background-size: var(--brick-tile-width) var(--brick-row-height);
+      background-position: left bottom;
+      overflow: hidden;
+    }
+
+    .music-controls {
+      position: fixed;
+      right: 1rem;
+      bottom: 1rem;
+      z-index: 120;
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.55rem;
+      border: 2px solid var(--line);
+      background: linear-gradient(180deg, #123062, #0e2347);
+      box-shadow: 0 6px 0 #0b1f41;
+    }
+
+    .music-btn {
+      border: 2px solid #6d99da;
+      background: #1a3970;
+      color: #fff;
+      padding: 0.35rem 0.65rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+      font-size: 0.8rem;
+    }
+
+    .music-btn:hover {
+      background: #214583;
+      transform: translateY(-1px);
+    }
+
+    .music-now {
+      margin: 0;
+      color: #d6e8ff;
+      font-size: 0.78rem;
+      max-width: 190px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .physics-ball {
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: 74px;
+      height: 74px;
+      z-index: 1002;
+      pointer-events: auto;
+      touch-action: none;
+      user-select: none;
+      -webkit-user-drag: none;
+      cursor: grab;
+      filter: drop-shadow(0 8px 14px #00000066);
+      will-change: transform;
+    }
+
+    .physics-ball.dragging {
+      cursor: grabbing;
+      filter: drop-shadow(0 12px 18px #00000088);
+    }
+
+    .brick-floor::before {
+      content: "";
+      position: absolute;
+      left: var(--top-row-left);
+      bottom: calc(var(--brick-row-height) - 14px);
+      width: var(--top-row-width);
+      height: var(--brick-row-height);
+      background-image: url("brick.png");
+      background-repeat: repeat-x;
+      background-size: var(--brick-tile-width) 100%;
+      background-position: left bottom;
+    }
+
+    @media (max-width: 700px) {
+      .panel,
+      .card {
+        animation: none;
+      }
+    }
+
     @media (max-width: 900px) {
       .hero {
         grid-template-columns: 1fr;
       }
       .grid-3 {
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 1fr;
+      }
+      .grid-2 {
+        grid-template-columns: 1fr;
       }
     }
 
@@ -574,10 +859,18 @@
       .hero {
         padding-top: 2rem;
       }
+
+      .brick-floor {
+        --brick-row-height: 44px;
+        --top-row-bricks: 4;
+        --top-row-left: calc(var(--brick-tile-width) * 0.5);
+        height: calc(var(--brick-row-height) * 1.55);
+      }
     }
   </style>
 </head>
 <body>
+  <div class="tag-transition" aria-hidden="true"></div>
   <div class="splash-screen">
     <div class="splash-bar splash-bar-top"></div>
     <div class="splash-bar splash-bar-bottom"></div>
@@ -587,6 +880,7 @@
     <div class="wrap nav">
       <a class="brand" href="#top">Ineti<span>xus</span></a>
       <nav class="nav-links">
+        <a class="secret-tag" href="secret-tag.html">&lt;TAG&gt;</a>
         <a href="#skills">Skills</a>
         <a href="#services">Services</a>
         <a href="#reviews">Reviews</a>
@@ -743,7 +1037,7 @@
       <div class="grid-3">
         <article class="card project fade">
           <div>
-            <img class="project-img" src="shop.png" alt="Shop GUI screenshot" />
+            <img class="project-img" src="shop.png" alt="Shop GUI and inventory system interface built in Roblox" />
             <h3>Shop GUI</h3>
             <p>A clean, custom Roblox shop interface — Fully styled to match in-game aesthetics.</p>
           </div>
@@ -751,7 +1045,7 @@
         </article>
         <article class="card project fade">
           <div>
-            <img class="project-img" src="map.png" alt="Map screenshot" />
+            <img class="project-img" src="map.png" alt="Custom Roblox map build showing layout and environment design" />
             <h3>Map Build</h3>
             <p>A Roblox map I built from scratch — shows my early building work and layout design skills.</p>
           </div>
@@ -761,8 +1055,8 @@
           <div>
             <h3>&lt;TAG&gt;</h3>
             <p>Advanced voting system with custom GUI and settings interface — showcasing full feature implementation.</p>
-            <img class="project-img" src="tag1.png" alt="Advanced voting system and GUI" style="margin-top: 0.5rem;" />
-            <img class="project-img" src="tag2.png" alt="Settings UI interface" />
+            <img class="project-img" src="tag1.png" alt="Advanced Roblox voting system GUI with custom controls" style="margin-top: 0.5rem;" />
+            <img class="project-img" src="tag2.png" alt="Roblox settings interface for the voting system project" />
           </div>
           <span class="pill">GUI + Scripting</span>
         </article>
@@ -777,14 +1071,80 @@
         <a class="contact-link" href="https://discord.com" target="_blank">💬 Discord: @inetixus_</a>
         <a class="contact-link" href="https://www.roblox.com/users/3762792455/profile" target="_blank">🎮 Roblox: megaplayerboi10</a>
       </div>
+      <img id="contactPlane" class="contact-plane" src="plane.png" alt="" aria-hidden="true" />
     </section>
   </main>
+
+  <div class="brick-floor" aria-hidden="true"></div>
+
+  <div class="music-controls" aria-label="Music player controls">
+    <button id="pauseBtn" class="music-btn" type="button">Pause</button>
+    <button id="skipBtn" class="music-btn" type="button">Skip</button>
+    <p id="nowPlaying" class="music-now">Now Playing: ... | Creator: Frizk</p>
+  </div>
+
+  <img id="physicsBall" class="physics-ball" src="ball.png" alt="" aria-hidden="true" />
 
   <footer>
     © 2026 Inetixus • Roblox Developer Portfolio
   </footer>
 
   <script>
+    const supportsCustomCursor = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+    if (supportsCustomCursor) {
+      const cursorEl = document.createElement("div");
+      cursorEl.className = "custom-cursor";
+      document.body.append(cursorEl);
+
+      const cursorAsset = new Image();
+      cursorAsset.addEventListener("load", () => {
+        document.documentElement.classList.add("custom-cursor-ready");
+      });
+      cursorAsset.src = "idle.png";
+
+      const setCursorImage = (name) => {
+        cursorEl.style.backgroundImage = `url("${name}")`;
+      };
+
+      window.addEventListener("pointermove", (event) => {
+        cursorEl.style.left = `${event.clientX}px`;
+        cursorEl.style.top = `${event.clientY}px`;
+        cursorEl.classList.add("visible");
+      });
+
+      window.addEventListener("pointerdown", () => setCursorImage("click.png"));
+      const resetCursor = () => setCursorImage("idle.png");
+      window.addEventListener("pointerup", resetCursor);
+      window.addEventListener("pointercancel", resetCursor);
+      window.addEventListener("blur", resetCursor);
+      document.addEventListener("visibilitychange", () => {
+        if (document.hidden) resetCursor();
+      });
+      document.addEventListener("mouseleave", () => {
+        cursorEl.classList.remove("visible");
+      });
+    }
+
+    const secretTagBtn = document.querySelector(".secret-tag");
+    if (secretTagBtn) {
+      secretTagBtn.addEventListener("click", (event) => {
+        event.preventDefault();
+        if (document.body.classList.contains("tag-shift")) return;
+
+        const targetPage = secretTagBtn.getAttribute("href") || "secret-tag.html";
+        persistMusicState();
+        document.body.classList.add("tag-shift");
+        window.setTimeout(() => {
+          window.location.href = targetPage;
+        }, 620);
+      });
+    }
+
+    window.addEventListener("scroll", () => {
+      document.querySelector(".topbar")
+        .classList.toggle("scrolled", window.scrollY > 20);
+    });
+
     const observer = new IntersectionObserver((entries) => {
       for (const entry of entries) {
         if (entry.isIntersecting) entry.target.classList.add("show");
@@ -792,6 +1152,464 @@
     }, { threshold: 0.15 });
 
     document.querySelectorAll(".fade").forEach((el) => observer.observe(el));
+
+    const songs = [
+      "Frizk - Bitrate - (320 Kbps).mp3",
+      "Frizk - Flashback - (320 Kbps).mp3",
+      "Frizk - I Feel Alive - (320 Kbps).mp3",
+      "Frizk - mintbeat - (320 Kbps).mp3"
+    ];
+    const MUSIC_STATE_KEY = "portfolioMusicStateV1";
+
+    const audio = new Audio();
+    audio.preload = "auto";
+    audio.volume = 0.7;
+
+    const pauseBtn = document.getElementById("pauseBtn");
+    const skipBtn = document.getElementById("skipBtn");
+    const nowPlaying = document.getElementById("nowPlaying");
+
+    let currentSongIndex = -1;
+
+    const getRandomSongIndex = () => {
+      if (songs.length <= 1) return 0;
+      let nextIndex = currentSongIndex;
+      while (nextIndex === currentSongIndex) {
+        nextIndex = Math.floor(Math.random() * songs.length);
+      }
+      return nextIndex;
+    };
+
+    const updateNowPlaying = (songPath) => {
+      const cleanName = songPath.replace("Frizk - ", "").replace(" - (320 Kbps).mp3", "");
+      nowPlaying.textContent = `Now Playing: ${cleanName} | Creator: Frizk`;
+    };
+
+    function persistMusicState() {
+      if (currentSongIndex < 0) return;
+      const state = {
+        index: currentSongIndex,
+        time: Number.isFinite(audio.currentTime) ? audio.currentTime : 0,
+        paused: audio.paused,
+        updatedAt: Date.now()
+      };
+      localStorage.setItem(MUSIC_STATE_KEY, JSON.stringify(state));
+    }
+
+    const getSavedMusicState = () => {
+      try {
+        const raw = localStorage.getItem(MUSIC_STATE_KEY);
+        if (!raw) return null;
+        const parsed = JSON.parse(raw);
+        if (!Number.isInteger(parsed.index)) return null;
+        if (parsed.index < 0 || parsed.index >= songs.length) return null;
+        return {
+          index: parsed.index,
+          time: Number.isFinite(parsed.time) ? parsed.time : 0,
+          paused: Boolean(parsed.paused)
+        };
+      } catch (error) {
+        return null;
+      }
+    };
+
+    const playSongByIndex = async (index, startAt = 0, shouldPlay = true) => {
+      currentSongIndex = index;
+      const songPath = songs[currentSongIndex];
+      audio.src = songPath;
+
+      if (Number.isFinite(startAt) && startAt > 0) {
+        const applyStartTime = () => {
+          const safeDuration = Number.isFinite(audio.duration) && audio.duration > 0 ? audio.duration : startAt;
+          audio.currentTime = Math.min(startAt, Math.max(0, safeDuration - 0.25));
+          audio.removeEventListener("loadedmetadata", applyStartTime);
+        };
+        audio.addEventListener("loadedmetadata", applyStartTime);
+      }
+
+      updateNowPlaying(songPath);
+
+      if (!shouldPlay) {
+        audio.pause();
+        pauseBtn.textContent = "Play";
+        persistMusicState();
+        return;
+      }
+
+      try {
+        await audio.play();
+        pauseBtn.textContent = "Pause";
+        persistMusicState();
+      } catch (error) {
+        // Browsers may block autoplay; playback is retried after first user interaction.
+        pauseBtn.textContent = "Play";
+      }
+    };
+
+    const playRandomSong = () => {
+      playSongByIndex(getRandomSongIndex());
+    };
+
+    skipBtn?.addEventListener("click", () => {
+      playRandomSong();
+    });
+
+    pauseBtn?.addEventListener("click", async () => {
+      if (audio.paused) {
+        try {
+          await audio.play();
+          pauseBtn.textContent = "Pause";
+          persistMusicState();
+        } catch (error) {
+          pauseBtn.textContent = "Play";
+        }
+      } else {
+        audio.pause();
+        pauseBtn.textContent = "Play";
+        persistMusicState();
+      }
+    });
+
+    audio.addEventListener("ended", () => {
+      playRandomSong();
+    });
+
+    audio.addEventListener("timeupdate", () => {
+      if (!audio.paused) persistMusicState();
+    });
+
+    audio.addEventListener("pause", persistMusicState);
+    audio.addEventListener("play", persistMusicState);
+    window.addEventListener("beforeunload", persistMusicState);
+
+    const unlockAudioOnce = async () => {
+      if (!audio.paused) return;
+      try {
+        await audio.play();
+        pauseBtn.textContent = "Pause";
+      } catch (error) {
+        // Ignore if browser still blocks playback.
+      }
+      window.removeEventListener("pointerdown", unlockAudioOnce);
+      window.removeEventListener("keydown", unlockAudioOnce);
+    };
+
+    window.addEventListener("pointerdown", unlockAudioOnce, { once: true });
+    window.addEventListener("keydown", unlockAudioOnce, { once: true });
+
+    const contactSection = document.getElementById("contact");
+    const contactPlane = document.getElementById("contactPlane");
+    if (contactSection && contactPlane) {
+      let flightPoints = [];
+      let cycleStartedAt = performance.now();
+      let previousPosition = null;
+      let rafId = 0;
+
+      const cycleDuration = 5200;
+      const flightDuration = 5200;
+
+      const buildFlightPath = () => {
+        const sectionRect = contactSection.getBoundingClientRect();
+        const links = contactSection.querySelector(".contact-links");
+
+        let linksTop = sectionRect.height * 0.62;
+        let linksMidY = sectionRect.height * 0.72;
+
+        if (links) {
+          const linksRect = links.getBoundingClientRect();
+          linksTop = linksRect.top - sectionRect.top;
+          linksMidY = linksTop + linksRect.height / 2;
+        }
+
+        flightPoints = [
+          { x: -120, y: Math.max(96, linksMidY + 8) },
+          { x: sectionRect.width * 0.2, y: Math.max(88, linksTop - 4) },
+          { x: sectionRect.width * 0.45, y: Math.max(82, linksTop - 22) },
+          { x: sectionRect.width * 0.73, y: Math.max(88, linksTop - 2) },
+          { x: sectionRect.width + 120, y: Math.max(96, linksMidY + 8) }
+        ];
+      };
+
+      const samplePath = (t) => {
+        const segments = flightPoints.length - 1;
+        const scaled = t * segments;
+        const segment = Math.min(segments - 1, Math.floor(scaled));
+        const localT = scaled - segment;
+
+        const p0 = flightPoints[Math.max(0, segment - 1)];
+        const p1 = flightPoints[segment];
+        const p2 = flightPoints[segment + 1];
+        const p3 = flightPoints[Math.min(flightPoints.length - 1, segment + 2)];
+
+        const tt = localT * localT;
+        const ttt = tt * localT;
+
+        const x = 0.5 * (
+          (2 * p1.x) +
+          (-p0.x + p2.x) * localT +
+          (2 * p0.x - 5 * p1.x + 4 * p2.x - p3.x) * tt +
+          (-p0.x + 3 * p1.x - 3 * p2.x + p3.x) * ttt
+        );
+
+        const y = 0.5 * (
+          (2 * p1.y) +
+          (-p0.y + p2.y) * localT +
+          (2 * p0.y - 5 * p1.y + 4 * p2.y - p3.y) * tt +
+          (-p0.y + 3 * p1.y - 3 * p2.y + p3.y) * ttt
+        );
+
+        return { x, y };
+      };
+
+      const spawnTrail = (x, y, angle) => {
+        const trail = document.createElement("span");
+        trail.className = "plane-trail";
+        trail.style.left = `${x}px`;
+        trail.style.top = `${y}px`;
+        trail.style.setProperty("--trail-angle", `${angle}deg`);
+        contactSection.append(trail);
+        trail.addEventListener("animationend", () => trail.remove());
+      };
+
+      const animatePlane = (now) => {
+        const elapsed = (now - cycleStartedAt) % cycleDuration;
+
+        if (elapsed <= flightDuration && flightPoints.length >= 2) {
+          const t = elapsed / flightDuration;
+          const pos = samplePath(t);
+          const next = samplePath(Math.min(1, t + 0.01));
+          const angle = Math.atan2(next.y - pos.y, next.x - pos.x) * 180 / Math.PI;
+
+          contactPlane.style.opacity = "1";
+          contactPlane.style.transform = `translate(${pos.x}px, ${pos.y}px) rotate(${angle}deg)`;
+
+          if (!previousPosition || Math.hypot(pos.x - previousPosition.x, pos.y - previousPosition.y) > 12) {
+            spawnTrail(pos.x - 18, pos.y + 13, angle);
+            previousPosition = pos;
+          }
+        }
+
+        rafId = window.requestAnimationFrame(animatePlane);
+      };
+
+      buildFlightPath();
+      window.addEventListener("resize", buildFlightPath);
+      rafId = window.requestAnimationFrame(animatePlane);
+    }
+
+    const physicsBall = document.getElementById("physicsBall");
+    if (physicsBall) {
+      const ballRadius = 37;
+      const gravity = 2100;
+      const restitution = 0.68;
+      const friction = 0.982;
+      const angularDamping = 0.986;
+      const rollingCoupling = 0.48;
+      const minSpeed = 12;
+      const obstacleSelector = ".topbar, .panel, .card, .reviews-section, .music-controls, .brick-floor, .contact-links, footer";
+
+      const state = {
+        x: Math.min(window.innerWidth - ballRadius - 16, 110),
+        y: Math.max(ballRadius + 16, window.innerHeight * 0.2),
+        vx: 240,
+        vy: 30,
+        angle: 0,
+        angularVelocity: 180,
+        dragging: false,
+        offsetX: 0,
+        offsetY: 0,
+        lastPointerX: 0,
+        lastPointerY: 0,
+        lastPointerTime: 0,
+        lastTime: performance.now()
+      };
+
+      const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
+
+      const getObstacles = () => {
+        return Array.from(document.querySelectorAll(obstacleSelector))
+          .filter((el) => {
+            const rect = el.getBoundingClientRect();
+            return rect.width > 0 && rect.height > 0;
+          })
+          .map((el) => el.getBoundingClientRect());
+      };
+
+      const resolveCircleRectCollision = (rect) => {
+        const nearestX = clamp(state.x, rect.left, rect.right);
+        const nearestY = clamp(state.y, rect.top, rect.bottom);
+
+        const dx = state.x - nearestX;
+        const dy = state.y - nearestY;
+        const distSq = dx * dx + dy * dy;
+
+        if (distSq >= ballRadius * ballRadius) return;
+
+        const dist = Math.sqrt(distSq) || 0.0001;
+        let nx = dx / dist;
+        let ny = dy / dist;
+
+        if (!Number.isFinite(nx) || !Number.isFinite(ny)) {
+          const leftPen = Math.abs(state.x - rect.left);
+          const rightPen = Math.abs(rect.right - state.x);
+          const topPen = Math.abs(state.y - rect.top);
+          const bottomPen = Math.abs(rect.bottom - state.y);
+          const minPen = Math.min(leftPen, rightPen, topPen, bottomPen);
+          if (minPen === leftPen) { nx = -1; ny = 0; }
+          else if (minPen === rightPen) { nx = 1; ny = 0; }
+          else if (minPen === topPen) { nx = 0; ny = -1; }
+          else { nx = 0; ny = 1; }
+        }
+
+        const penetration = ballRadius - dist;
+        state.x += nx * penetration;
+        state.y += ny * penetration;
+
+        const normalVelocity = state.vx * nx + state.vy * ny;
+        if (normalVelocity < 0) {
+          state.vx -= (1 + restitution) * normalVelocity * nx;
+          state.vy -= (1 + restitution) * normalVelocity * ny;
+
+          const tx = -ny;
+          const ty = nx;
+          const tangentialVelocity = state.vx * tx + state.vy * ty;
+          state.angularVelocity += tangentialVelocity * 0.2;
+
+          state.vx *= 0.987;
+          state.vy *= 0.987;
+          state.angularVelocity *= 0.97;
+        }
+      };
+
+      const resolveViewportBounds = () => {
+        if (state.x - ballRadius < 0) {
+          state.x = ballRadius;
+          state.vx = Math.abs(state.vx) * restitution;
+          state.angularVelocity *= 0.9;
+        }
+        if (state.x + ballRadius > window.innerWidth) {
+          state.x = window.innerWidth - ballRadius;
+          state.vx = -Math.abs(state.vx) * restitution;
+          state.angularVelocity *= 0.9;
+        }
+        if (state.y - ballRadius < 0) {
+          state.y = ballRadius;
+          state.vy = Math.abs(state.vy) * restitution;
+          state.angularVelocity += state.vx * 0.1;
+        }
+        if (state.y + ballRadius > window.innerHeight) {
+          state.y = window.innerHeight - ballRadius;
+          state.vy = -Math.abs(state.vy) * restitution;
+          state.vx *= 0.98;
+          state.angularVelocity += state.vx * 0.16;
+        }
+      };
+
+      const renderBall = () => {
+        physicsBall.style.transform = `translate(${state.x - ballRadius}px, ${state.y - ballRadius}px) rotate(${state.angle}deg)`;
+      };
+
+      const animateBall = (now) => {
+        const dt = Math.min(0.033, Math.max(0.001, (now - state.lastTime) / 1000));
+        state.lastTime = now;
+
+        if (!state.dragging) {
+          state.vy += gravity * dt;
+          state.vx *= friction;
+          state.vy *= 0.998;
+          state.angularVelocity *= angularDamping;
+
+          // Keep spin synced to roll speed for a natural rolling look.
+          state.angularVelocity += (state.vx * rollingCoupling - state.angularVelocity) * 0.045;
+
+          if (Math.abs(state.vx) < minSpeed) state.vx = 0;
+          if (Math.abs(state.vy) < minSpeed / 2) state.vy = 0;
+          if (Math.abs(state.angularVelocity) < 4) state.angularVelocity = 0;
+
+          state.x += state.vx * dt;
+          state.y += state.vy * dt;
+          state.angle += state.angularVelocity * dt;
+
+          resolveViewportBounds();
+
+          const obstacles = getObstacles();
+          for (const rect of obstacles) {
+            resolveCircleRectCollision(rect);
+          }
+        }
+
+        renderBall();
+        window.requestAnimationFrame(animateBall);
+      };
+
+      const onDragStart = (event) => {
+        event.preventDefault();
+        state.dragging = true;
+        physicsBall.classList.add("dragging");
+        physicsBall.setPointerCapture(event.pointerId);
+
+        state.offsetX = event.clientX - state.x;
+        state.offsetY = event.clientY - state.y;
+        state.lastPointerX = event.clientX;
+        state.lastPointerY = event.clientY;
+        state.lastPointerTime = performance.now();
+        state.vx = 0;
+        state.vy = 0;
+        state.angularVelocity = 0;
+      };
+
+      const onDragMove = (event) => {
+        if (!state.dragging) return;
+
+        const now = performance.now();
+        const dtMs = Math.max(8, now - state.lastPointerTime);
+
+        const nextX = clamp(event.clientX - state.offsetX, ballRadius, window.innerWidth - ballRadius);
+        const nextY = clamp(event.clientY - state.offsetY, ballRadius, window.innerHeight - ballRadius);
+
+        state.vx = ((event.clientX - state.lastPointerX) / dtMs) * 1000;
+        state.vy = ((event.clientY - state.lastPointerY) / dtMs) * 1000;
+        state.angularVelocity = state.vx * 0.34;
+
+        state.x = nextX;
+        state.y = nextY;
+        state.angle += state.angularVelocity * (dtMs / 1000);
+
+        state.lastPointerX = event.clientX;
+        state.lastPointerY = event.clientY;
+        state.lastPointerTime = now;
+      };
+
+      const onDragEnd = (event) => {
+        if (!state.dragging) return;
+        state.dragging = false;
+        physicsBall.classList.remove("dragging");
+        physicsBall.releasePointerCapture(event.pointerId);
+        state.vx = clamp(state.vx, -1800, 1800);
+        state.vy = clamp(state.vy, -1800, 1800);
+        state.angularVelocity = clamp(state.angularVelocity, -900, 900);
+      };
+
+      physicsBall.addEventListener("pointerdown", onDragStart);
+      window.addEventListener("pointermove", onDragMove);
+      window.addEventListener("pointerup", onDragEnd);
+      window.addEventListener("pointercancel", onDragEnd);
+
+      window.addEventListener("resize", () => {
+        state.x = clamp(state.x, ballRadius, window.innerWidth - ballRadius);
+        state.y = clamp(state.y, ballRadius, window.innerHeight - ballRadius);
+      });
+
+      renderBall();
+      window.requestAnimationFrame(animateBall);
+    }
+
+    const savedMusicState = getSavedMusicState();
+    if (savedMusicState) {
+      playSongByIndex(savedMusicState.index, savedMusicState.time, !savedMusicState.paused);
+    } else {
+      playRandomSong();
+    }
   </script>
 </body>
 </html>
