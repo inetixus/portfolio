@@ -1,0 +1,509 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Inetixus | Roblox Developer Portfolio</title>
+  <meta name="description" content="Portfolio of Inetixus, Roblox GUI & Scripting Developer." />
+  <style>
+    :root {
+      --bg: #071225;
+      --bg-2: #0d1f3e;
+      --card: #132a52;
+      --card-2: #1a3970;
+      --main: #2f7dff;
+      --main-light: #5fa3ff;
+      --text: #eaf3ff;
+      --muted: #b9c9e6;
+      --line: #335f9f;
+      --good: #66d18f;
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 10% 10%, #1a3570 0%, transparent 35%),
+        radial-gradient(circle at 90% 80%, #114296 0%, transparent 30%),
+        linear-gradient(180deg, var(--bg), var(--bg-2));
+      font-family: "Trebuchet MS", "Verdana", sans-serif;
+      scroll-behavior: smooth;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: -50%;
+      pointer-events: none;
+      opacity: 0.18;
+      background-image: url("weld.png");
+      background-repeat: repeat;
+      background-size: 140px 140px;
+    }
+
+    .wrap {
+      width: min(1100px, calc(100% - 2rem));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: #0a1730cc;
+      backdrop-filter: blur(6px);
+      border-bottom: 2px solid var(--line);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 64px;
+      gap: 1rem;
+    }
+
+    .brand {
+      font-weight: 900;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: #fff;
+      text-decoration: none;
+      text-shadow: 0 2px 0 #0f2d62;
+    }
+
+    .brand span { color: var(--main-light); }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text);
+      padding: 0.45rem 0.75rem;
+      border: 2px solid var(--line);
+      background: #0f2650;
+      font-size: 0.92rem;
+      transition: transform 120ms ease, background 120ms ease;
+    }
+
+    .nav-links a:hover {
+      background: #17356b;
+      transform: translateY(-2px);
+    }
+
+    .hero {
+      padding: 4rem 0 3rem;
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 1.2rem;
+      align-items: center;
+    }
+
+    .panel {
+      border: 3px solid var(--line);
+      background: linear-gradient(180deg, var(--card), #10264b);
+      box-shadow: 0 10px 0 #0a1730;
+      padding: 1.2rem;
+    }
+
+    .hero h1 {
+      margin: 0;
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      line-height: 1.05;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      text-shadow: 0 3px 0 #112a57;
+    }
+
+    .tagline {
+      margin: 0.8rem 0 0;
+      color: var(--muted);
+      font-size: 1.1rem;
+    }
+
+    .badges {
+      margin-top: 1rem;
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .badge {
+      padding: 0.35rem 0.6rem;
+      border: 2px solid #4f82c7;
+      background: #1c3d76;
+      color: #dcedff;
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    .cta-row {
+      margin-top: 1.25rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+    }
+
+    .btn {
+      display: inline-block;
+      text-decoration: none;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      padding: 0.7rem 1rem;
+      border: 3px solid #83b6ff;
+      color: #fff;
+      background: linear-gradient(180deg, #3a8cff, #2b67d8);
+      box-shadow: 0 6px 0 #1e4698;
+      transition: transform 120ms ease, box-shadow 120ms ease;
+    }
+
+    .btn:hover {
+      transform: translateY(2px);
+      box-shadow: 0 4px 0 #1e4698;
+    }
+
+    .btn.secondary {
+      background: linear-gradient(180deg, #315b9e, #224175);
+      border-color: #6d99da;
+      box-shadow: 0 6px 0 #13264a;
+    }
+
+    section {
+      padding: 1.4rem 0;
+    }
+
+    .section-title {
+      margin: 0 0 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      font-size: 1.35rem;
+      color: #d4e7ff;
+    }
+
+    .grid-3, .grid-2 {
+      display: grid;
+      gap: 0.9rem;
+    }
+
+    .grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
+    .card {
+      border: 3px solid var(--line);
+      background: linear-gradient(180deg, var(--card), var(--card-2));
+      box-shadow: 0 7px 0 #0f2245;
+      padding: 1rem;
+    }
+
+    .card h3 {
+      margin: 0 0 0.5rem;
+      text-transform: uppercase;
+      font-size: 1rem;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.45;
+      font-size: 0.95rem;
+    }
+
+    .project {
+      min-height: 140px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .project-img {
+      width: 100%;
+      display: block;
+      border: 2px solid var(--line);
+      margin-bottom: 0.75rem;
+      image-rendering: auto;
+    }
+
+    .pill {
+      align-self: start;
+      margin-top: 0.7rem;
+      padding: 0.25rem 0.5rem;
+      border: 2px solid #6d99da;
+      background: #18366a;
+      color: #d6e8ff;
+      font-size: 0.75rem;
+      font-weight: 700;
+    }
+
+    .pay-list {
+      margin: 0.25rem 0 0;
+      padding-left: 1.1rem;
+      color: var(--muted);
+    }
+
+    .pay-list li { margin: 0.3rem 0; }
+
+    .highlight {
+      color: var(--good);
+      font-weight: 800;
+    }
+
+    .contact {
+      text-align: center;
+      padding-bottom: 3rem;
+    }
+
+    .contact p {
+      margin: 0 0 1rem;
+      color: var(--muted);
+    }
+
+    .contact-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.8rem;
+    }
+
+    .contact-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.6rem 1rem;
+      border: 2px solid var(--line);
+      background: #132a52;
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 700;
+      text-transform: uppercase;
+      font-size: 0.9rem;
+      transition: transform 120ms ease, background 120ms ease;
+    }
+
+    .contact-link:hover {
+      background: #1a3970;
+      transform: translateY(-2px);
+    }
+
+    .fade {
+      opacity: 0;
+      transform: translateY(14px);
+      transition: opacity 380ms ease, transform 380ms ease;
+    }
+
+    .fade.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    footer {
+      border-top: 2px solid var(--line);
+      color: #abc5ef;
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.9rem;
+      background: #0a1730;
+    }
+
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+      .grid-3 {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .grid-3, .grid-2 {
+        grid-template-columns: 1fr;
+      }
+      .nav {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 0.5rem 0;
+      }
+      .nav-links {
+        justify-content: center;
+      }
+      .hero {
+        padding-top: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap nav">
+      <a class="brand" href="#top">Ineti<span>xus</span></a>
+      <nav class="nav-links">
+        <a href="#skills">Skills</a>
+        <a href="#services">Services</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top" class="wrap">
+    <section class="hero">
+      <div class="panel fade">
+        <h1>Inetixus<br>Roblox Developer</h1>
+        <p class="tagline">
+          I build clean, responsive Roblox GUIs and solid game scripts.
+          I’m currently a starter in Building and VFX, and leveling up fast.
+        </p>
+        <div class="badges">
+          <span class="badge">GUI Specialist</span>
+          <span class="badge">Scripting</span>
+          <span class="badge">Reliable</span>
+          <span class="badge">Affordable</span>
+        </div>
+        <div class="cta-row">
+          <a class="btn" href="#contact">Hire Me</a>
+          <a class="btn secondary" href="#projects">View Work</a>
+        </div>
+      </div>
+
+      <aside class="panel fade">
+        <h3 style="margin-top:0;text-transform:uppercase;">Quick Info</h3>
+        <p style="margin:0.3rem 0;color:var(--muted);">
+          Focus: <span class="highlight">GUI + Scripting</span>
+        </p>
+        <p style="margin:0.3rem 0;color:var(--muted);">
+          Building: Starter
+        </p>
+        <p style="margin:0.3rem 0;color:var(--muted);">
+          VFX: Starter
+        </p>
+        <p style="margin:0.6rem 0 0;color:var(--muted);">
+          Payment accepted:
+        </p>
+        <ul class="pay-list">
+          <li>Cheap Robux deals</li>
+          <li>Money payments</li>
+          <li>Game revenue % agreements</li>
+        </ul>
+      </aside>
+    </section>
+
+    <section id="skills">
+      <h2 class="section-title fade">Skills</h2>
+      <div class="grid-3">
+        <article class="card fade">
+          <h3>GUI Design</h3>
+          <p>Modern and game-matching interfaces, polished layouts, and user-friendly UX for Roblox players.</p>
+        </article>
+        <article class="card fade">
+          <h3>Scripting</h3>
+          <p>Gameplay systems, interactions, and reliable scripted features to bring your game ideas to life.</p>
+        </article>
+        <article class="card fade">
+          <h3>Building + VFX (Starter)</h3>
+          <p>Basic environment work and simple effects while continuously improving quality and speed.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="services">
+      <h2 class="section-title fade">Services & Pricing</h2>
+      <div class="grid-2">
+        <article class="card fade">
+          <h3>What I Offer</h3>
+          <p>GUI creation, feature scripting, bug fixing, and helping structure systems for your Roblox game project.</p>
+        </article>
+        <article class="card fade">
+          <h3>Payment Options</h3>
+          <p>I offer flexible and affordable payment methods:</p>
+          <ul class="pay-list">
+            <li>Robux (cheap rates)</li>
+            <li>Direct money payment</li>
+            <li>Revenue share percentage</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="section-title fade">Why Choose Me</h2>
+      <div class="grid-3">
+        <article class="card fade">
+          <h3>Fast Communication</h3>
+          <p>I keep updates clear and frequent so you always know project progress.</p>
+        </article>
+        <article class="card fade">
+          <h3>Affordable Deals</h3>
+          <p>I keep pricing budget-friendly while still delivering quality work.</p>
+        </article>
+        <article class="card fade">
+          <h3>Growth Mindset</h3>
+          <p>I actively improve building and VFX skills to offer more value over time.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="projects">
+      <h2 class="section-title fade">Projects</h2>
+      <div class="grid-3">
+        <article class="card project fade">
+          <div>
+            <img class="project-img" src="shop.png" alt="Shop GUI screenshot" />
+            <h3>Shop GUI</h3>
+            <p>A clean, custom Roblox shop interface — Fully styled to match in-game aesthetics.</p>
+          </div>
+          <span class="pill">GUI Design</span>
+        </article>
+        <article class="card project fade">
+          <div>
+            <img class="project-img" src="map.png" alt="Map screenshot" />
+            <h3>Map Build</h3>
+            <p>A Roblox map I built from scratch — shows my early building work and layout design skills.</p>
+          </div>
+          <span class="pill">Building</span>
+        </article>
+        <article class="card project fade">
+          <div>
+            <h3>&lt;TAG&gt;</h3>
+            <p>Advanced voting system with custom GUI and settings interface — showcasing full feature implementation.</p>
+            <img class="project-img" src="tag1.png" alt="Advanced voting system and GUI" style="margin-top: 0.5rem;" />
+            <img class="project-img" src="tag2.png" alt="Settings UI interface" />
+          </div>
+          <span class="pill">GUI + Scripting</span>
+        </article>
+      </div>
+    </section>
+
+    <section id="contact" class="contact">
+      <h2 class="section-title fade">Contact Me</h2>
+      <p class="fade">Ready to work together? Reach out and tell me what you need for your Roblox game.</p>
+      <div class="contact-links fade">
+        <a class="contact-link" href="mailto:inetixus@gmail.com">📧 Email</a>
+        <a class="contact-link" href="https://discord.com" target="_blank">💬 Discord: @inetixus_</a>
+        <a class="contact-link" href="https://www.roblox.com" target="_blank">🎮 Roblox: megaplayerboi10</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © 2026 Inetixus • Roblox Developer Portfolio
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      for (const entry of entries) {
+        if (entry.isIntersecting) entry.target.classList.add("show");
+      }
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll(".fade").forEach((el) => observer.observe(el));
+  </script>
+</body>
+</html>
