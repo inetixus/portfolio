@@ -251,6 +251,41 @@
 
     .pay-list li { margin: 0.3rem 0; }
 
+    .service-intro {
+      margin: 0 0 0.85rem;
+      color: var(--muted);
+    }
+
+    .price {
+      margin: 0.35rem 0 0.65rem;
+      font-size: 1.3rem;
+      font-weight: 900;
+      color: #ffffff;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+    }
+
+    .package-list {
+      margin: 0;
+      padding-left: 1.1rem;
+      color: var(--muted);
+      line-height: 1.45;
+    }
+
+    .package-list li {
+      margin: 0.25rem 0;
+    }
+
+    .package-cta {
+      margin-top: 0.9rem;
+    }
+
+    .small-note {
+      margin: 0.8rem 0 0;
+      color: #abc5ef;
+      font-size: 0.86rem;
+    }
+
     .highlight {
       color: var(--good);
       font-weight: 800;
@@ -271,6 +306,15 @@
       flex-wrap: wrap;
       justify-content: center;
       gap: 0.8rem;
+    }
+
+    .contact-email {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.6rem 0;
+      color: var(--text);
+      font-weight: 700;
+      font-size: 0.95rem;
     }
 
     .contact-link {
@@ -415,21 +459,43 @@
 
     <section id="services">
       <h2 class="section-title fade">Services & Pricing</h2>
-      <div class="grid-2">
+      <p class="service-intro fade">Pick a package based on your project scope. Final quote depends on feature complexity and deadline.</p>
+      <div class="grid-3">
         <article class="card fade">
-          <h3>What I Offer</h3>
-          <p>GUI creation, feature scripting, bug fixing, and helping structure systems for your Roblox game project.</p>
+          <h3>Basic GUI Package</h3>
+          <p class="price">200 Robux</p>
+          <ul class="package-list">
+            <li>1 complete game-matching GUI</li>
+            <li>Responsive scaling setup</li>
+            <li>Basic transitions and polish</li>
+            <li>1 revision round included</li>
+          </ul>
+          <a class="btn package-cta" href="#contact">Hire Me</a>
         </article>
         <article class="card fade">
-          <h3>Payment Options</h3>
-          <p>I offer flexible and affordable payment methods:</p>
-          <ul class="pay-list">
-            <li>Robux (cheap rates)</li>
-            <li>Direct money payment</li>
-            <li>Revenue share percentage</li>
+          <h3>Advanced GUI</h3>
+          <p class="price">300 Robux</p>
+          <ul class="package-list">
+            <li>Custom GUI flow with multiple pages</li>
+            <li>Feature scripting (shop, stats, or inventory)</li>
+            <li>Bug testing and cleanup</li>
+            <li>2 revision rounds included</li>
           </ul>
+          <a class="btn package-cta" href="#contact">Hire Me</a>
+        </article>
+        <article class="card fade">
+          <h3>Full Basic Script System</h3>
+          <p class="price">450 Robux</p>
+          <ul class="package-list">
+            <li>Complete GUI + gameplay systems</li>
+            <li>Structured modules and clean organization</li>
+            <li>Performance and UX improvements</li>
+            <li>3 revision rounds included</li>
+          </ul>
+          <a class="btn package-cta" href="#contact">Hire Me</a>
         </article>
       </div>
+      <p class="small-note fade">More advanced GUIs and systems can be discussed in DMs.</p>
     </section>
 
     <section>
@@ -485,9 +551,9 @@
       <h2 class="section-title fade">Contact Me</h2>
       <p class="fade">Ready to work together? Reach out and tell me what you need for your Roblox game.</p>
       <div class="contact-links fade">
-        <a class="contact-link" href="mailto:inetixus@gmail.com">📧 Email</a>
+        <span class="contact-email">inetixus@gmail.com</span>
         <a class="contact-link" href="https://discord.com" target="_blank">💬 Discord: @inetixus_</a>
-        <a class="contact-link" href="https://www.roblox.com" target="_blank">🎮 Roblox: megaplayerboi10</a>
+        <a class="contact-link" href="https://www.roblox.com/users/3762792455/profile" target="_blank">🎮 Roblox: megaplayerboi10</a>
       </div>
     </section>
   </main>
