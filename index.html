@@ -1483,6 +1483,17 @@
     const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
 
     draggableQuotes.forEach((quote) => {
+      const getQuoteBounds = () => {
+        const pageWidth = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+        const pageHeight = Math.max(document.documentElement.scrollHeight, document.body.scrollHeight);
+        return {
+          minX: 0,
+          maxX: Math.max(0, pageWidth - quote.offsetWidth),
+          minY: 0,
+          maxY: Math.max(0, pageHeight - quote.offsetHeight)
+        };
+      };
+
       const dragState = {
         active: false,
         pointerId: null,
@@ -1510,20 +1521,20 @@
           const dt = Math.min(0.034, Math.max(0.001, (now - lastTick) / 1000));
           lastTick = now;
 
-          const maxX = Math.max(0, window.innerWidth - quote.offsetWidth);
-          const maxY = Math.max(0, window.innerHeight - quote.offsetHeight);
-          let x = clamp(parseFloat(quote.style.left) || 0, 0, maxX);
-          let y = clamp(parseFloat(quote.style.top) || 0, 0, maxY);
+          const bounds = getQuoteBounds();
+
+          let x = clamp(parseFloat(quote.style.left) || 0, bounds.minX, bounds.maxX);
+          let y = clamp(parseFloat(quote.style.top) || 0, bounds.minY, bounds.maxY);
 
           x += dragState.vx * dt;
           y += dragState.vy * dt;
 
-          if (x <= 0 || x >= maxX) {
-            x = clamp(x, 0, maxX);
+          if (x <= bounds.minX || x >= bounds.maxX) {
+            x = clamp(x, bounds.minX, bounds.maxX);
             dragState.vx *= -0.35;
           }
-          if (y <= 0 || y >= maxY) {
-            y = clamp(y, 0, maxY);
+          if (y <= bounds.minY || y >= bounds.maxY) {
+            y = clamp(y, bounds.minY, bounds.maxY);
             dragState.vy *= -0.35;
           }
 
@@ -1551,18 +1562,27 @@
         stopMomentum();
 
         const rect = quote.getBoundingClientRect();
-        quote.style.position = "fixed";
-        quote.style.left = `${rect.left}px`;
-        quote.style.top = `${rect.top}px`;
+        const rectPageLeft = rect.left + window.scrollX;
+        const rectPageTop = rect.top + window.scrollY;
+
+        if (quote.parentElement !== document.body) {
+          document.body.appendChild(quote);
+        }
+
+        quote.style.position = "absolute";
+        quote.style.left = `${rectPageLeft}px`;
+        quote.style.top = `${rectPageTop}px`;
         quote.style.right = "auto";
         quote.style.bottom = "auto";
 
+        const pointerPageX = event.clientX + window.scrollX;
+        const pointerPageY = event.clientY + window.scrollY;
         dragState.active = true;
         dragState.pointerId = event.pointerId;
-        dragState.offsetX = event.clientX - rect.left;
-        dragState.offsetY = event.clientY - rect.top;
-        dragState.lastX = rect.left;
-        dragState.lastY = rect.top;
+        dragState.offsetX = pointerPageX - rectPageLeft;
+        dragState.offsetY = pointerPageY - rectPageTop;
+        dragState.lastX = rectPageLeft;
+        dragState.lastY = rectPageTop;
         dragState.lastTime = performance.now();
         dragState.vx = 0;
         dragState.vy = 0;
@@ -1575,10 +1595,11 @@
       const onDragMove = (event) => {
         if (!dragState.active || event.pointerId !== dragState.pointerId) return;
 
-        const maxX = Math.max(0, window.innerWidth - quote.offsetWidth);
-        const maxY = Math.max(0, window.innerHeight - quote.offsetHeight);
-        const nextX = clamp(event.clientX - dragState.offsetX, 0, maxX);
-        const nextY = clamp(event.clientY - dragState.offsetY, 0, maxY);
+        const bounds = getQuoteBounds();
+        const pointerPageX = event.clientX + window.scrollX;
+        const pointerPageY = event.clientY + window.scrollY;
+        const nextX = clamp(pointerPageX - dragState.offsetX, bounds.minX, bounds.maxX);
+        const nextY = clamp(pointerPageY - dragState.offsetY, bounds.minY, bounds.maxY);
 
         const now = performance.now();
         const dt = Math.max(0.008, (now - dragState.lastTime) / 1000);
