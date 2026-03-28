@@ -309,6 +309,86 @@
       font-size: 0.86rem;
     }
 
+    .reviews-lead {
+      margin: 0 0 0.85rem;
+      color: var(--muted);
+      font-weight: 700;
+      font-size: 1.02rem;
+    }
+
+    .reviews-section {
+      margin: 0.7rem 0 0.5rem;
+      padding: 1rem;
+      border: 3px solid #6fa8ff;
+      background: linear-gradient(180deg, #122b58, #0f244a);
+      box-shadow: 0 10px 0 #0f2245;
+    }
+
+    .reviews-section .section-title {
+      font-size: clamp(1.6rem, 3.6vw, 2.1rem);
+      color: #f1f7ff;
+      text-shadow: 0 2px 0 #17356b;
+    }
+
+    .reviews-belt {
+      overflow: hidden;
+      border: 3px solid #5f98f6;
+      background: linear-gradient(180deg, #1a3970, #123062);
+      box-shadow: 0 7px 0 #0b1f41;
+      padding: 0.8rem 0;
+      position: relative;
+    }
+
+    .reviews-track {
+      display: flex;
+      width: max-content;
+      gap: 0.9rem;
+      animation: reviewsMarquee 16s linear infinite;
+      padding-left: 0.9rem;
+    }
+
+    .review-card {
+      width: min(520px, calc(100vw - 5rem));
+      border: 2px solid #4f82c7;
+      background: linear-gradient(180deg, #1a3970, #14315f);
+      padding: 0.85rem;
+      box-shadow: 0 4px 0 #10254a;
+    }
+
+    .review-user {
+      margin: 0;
+      color: #dcedff;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+      font-size: 0.9rem;
+    }
+
+    .review-text {
+      margin: 0.55rem 0;
+      color: #d0e5ff;
+      line-height: 1.45;
+      font-size: 0.95rem;
+    }
+
+    .review-score {
+      margin: 0;
+      color: var(--good);
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+      font-size: 1.05rem;
+    }
+
+    @keyframes reviewsMarquee {
+      from {
+        transform: translateX(0);
+      }
+      to {
+        transform: translateX(calc(-50% - 0.45rem));
+      }
+    }
+
     .highlight {
       color: var(--good);
       font-weight: 800;
@@ -509,6 +589,7 @@
       <nav class="nav-links">
         <a href="#skills">Skills</a>
         <a href="#services">Services</a>
+        <a href="#reviews">Reviews</a>
         <a href="#projects">Projects</a>
         <a href="#contact">Contact</a>
       </nav>
@@ -558,6 +639,30 @@
           <li>Game revenue % agreements</li>
         </ul>
       </aside>
+    </section>
+
+    <section id="reviews" class="reviews-section">
+      <h2 class="section-title fade">Player Reviews</h2>
+      <p class="reviews-lead fade">Don't trust my word, trust the reviews from players.</p>
+      <div class="reviews-belt fade" aria-label="Player reviews moving belt">
+        <div class="reviews-track">
+          <article class="review-card">
+            <p class="review-user">@alexanderthegreat6704</p>
+            <p class="review-text">"Fine gui, Didn't take too long, made it adapt to my needs"</p>
+            <p class="review-score">9.5/10</p>
+          </article>
+          <article class="review-card" aria-hidden="true">
+            <p class="review-user">@alexanderthegreat6704</p>
+            <p class="review-text">"Fine gui, Didn't take too long, made it adapt to my needs"</p>
+            <p class="review-score">9.5/10</p>
+          </article>
+          <article class="review-card" aria-hidden="true">
+            <p class="review-user">@alexanderthegreat6704</p>
+            <p class="review-text">"Fine gui, Didn't take too long, made it adapt to my needs"</p>
+            <p class="review-score">9.5/10</p>
+          </article>
+        </div>
+      </div>
     </section>
 
     <section id="skills">
