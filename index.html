@@ -23,6 +23,7 @@
       --muted: #b9c9e6;
       --line: #335f9f;
       --good: #66d18f;
+      --sidebar-width: 220px;
     }
 
     * { box-sizing: border-box; }
@@ -31,6 +32,7 @@
       margin: 0;
       padding: 0;
       cursor: default;
+      overflow-x: hidden;
       color: var(--text);
       background:
         radial-gradient(circle at 10% 10%, #1a3570 0%, transparent 35%),
@@ -38,6 +40,17 @@
         linear-gradient(180deg, var(--bg), var(--bg-2));
       font-family: "Trebuchet MS", "Verdana", sans-serif;
       scroll-behavior: smooth;
+    }
+
+    html {
+      overflow-y: hidden;
+    }
+
+    body {
+      position: relative;
+      height: 100vh;
+      overflow-y: auto;
+      padding-left: calc(var(--sidebar-width) + 1rem);
     }
 
     .custom-cursor {
@@ -120,25 +133,29 @@
     .roblox-quote.q9 { top: 136rem; right: -11.4rem; }
 
     .topbar {
-      position: sticky;
+      position: fixed;
+      left: 0;
       top: 0;
+      bottom: 0;
+      width: var(--sidebar-width);
+      overflow: hidden;
       z-index: 50;
       background: #0a1730cc;
       backdrop-filter: blur(6px);
-      border-bottom: 2px solid var(--line);
+      border-right: 2px solid var(--line);
       transition: box-shadow 200ms ease;
     }
 
     .topbar.scrolled {
-      box-shadow: 0 6px 18px #00000055;
+      box-shadow: 6px 0 18px #00000055;
     }
 
     .nav {
       display: flex;
-      align-items: center;
-      justify-content: space-between;
-      min-height: 64px;
-      gap: 1rem;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 0.85rem;
+      padding: 1rem 0.8rem;
     }
 
     .brand {
@@ -154,7 +171,7 @@
 
     .nav-links {
       display: flex;
-      flex-wrap: wrap;
+      flex-direction: column;
       gap: 0.6rem;
     }
 
@@ -165,6 +182,7 @@
       border: 2px solid var(--line);
       background: #0f2650;
       font-size: 0.92rem;
+      text-align: left;
       transition: transform 120ms ease, background 120ms ease;
     }
 
@@ -266,6 +284,14 @@
       letter-spacing: 0.5px;
       text-transform: uppercase;
       text-shadow: 0 3px 0 #112a57;
+    }
+
+    .hero h1 .hero-subtitle {
+      display: block;
+      margin-top: 0.15rem;
+      font-size: 0.52em;
+      letter-spacing: 1.1px;
+      color: #cfe3ff;
     }
 
     .tagline {
@@ -1054,6 +1080,42 @@
     }
 
     @media (max-width: 900px) {
+      body {
+        padding-left: 0;
+        padding-top: 74px;
+      }
+
+      .topbar {
+        position: fixed;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: auto;
+        width: auto;
+        border-right: none;
+        border-bottom: 2px solid var(--line);
+      }
+
+      .topbar.scrolled {
+        box-shadow: 0 6px 18px #00000055;
+      }
+
+      .nav {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        min-height: 64px;
+        height: auto;
+        padding: 0.5rem 1rem;
+        gap: 0.75rem;
+      }
+
+      .nav-links {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+      }
+
       .hero {
         grid-template-columns: 1fr;
       }
@@ -1120,11 +1182,19 @@
       .nav {
         flex-direction: column;
         align-items: stretch;
-        padding: 0.5rem 0;
+        min-height: 0;
+        padding: 0.5rem 0.65rem;
       }
+
       .nav-links {
         justify-content: center;
       }
+
+      .nav-links a,
+      .brand {
+        text-align: center;
+      }
+
       .hero {
         padding-top: 2rem;
       }
@@ -1146,7 +1216,7 @@
     <img class="splash-logo" src="icon.png" alt="Roblox Studio" />
   </div>
   <header class="topbar">
-    <div class="wrap nav">
+    <div class="nav">
       <a class="brand" href="#top">Ineti<span>xus</span></a>
       <nav class="nav-links">
         <a class="secret-tag" href="secret-tag.html">&lt;TAG&gt;</a>
@@ -1172,7 +1242,7 @@
 
     <section class="hero">
       <div class="panel fade">
-        <h1>Inetixus<br>Roblox Developer</h1>
+        <h1>Inetixus<span class="hero-subtitle">Roblox Developer</span></h1>
         <p class="tagline">
           I build clean, responsive Roblox GUIs and solid game scripts.
           I offer very cheap rates and I’m currently a starter in Building and VFX, leveling up fast.
@@ -1223,6 +1293,11 @@
             <p class="review-user">@alexanderthegreat6704</p>
             <p class="review-text">"Fine gui, Didn't take too long, made it adapt to my needs"</p>
             <p class="review-score">9.5/10</p>
+          </article>
+          <article class="review-card">
+            <p class="review-user">@rinxdim</p>
+            <p class="review-text">"Responsive, Fast, And Very Friendly"</p>
+            <p class="review-score">10/10</p>
           </article>
           <article class="review-card" aria-hidden="true">
             <p class="review-user">@alexanderthegreat6704</p>
@@ -1394,6 +1469,10 @@
       (typeof navigator.hardwareConcurrency === "number" && navigator.hardwareConcurrency <= 4) ||
       (typeof navigator.deviceMemory === "number" && navigator.deviceMemory <= 4);
 
+    const isMobileDevice =
+      window.matchMedia("(max-width: 768px)").matches ||
+      window.matchMedia("(hover: none) and (pointer: coarse)").matches;
+
     const supportsCustomCursor =
       window.matchMedia("(hover: hover) and (pointer: fine)").matches && !lowPerformanceMode;
     if (supportsCustomCursor) {
@@ -1459,15 +1538,19 @@
 
     const topbarEl = document.querySelector(".topbar");
     let topbarScrollTicking = false;
+    const getPageScrollX = () => window.scrollX || document.documentElement.scrollLeft || document.body.scrollLeft || 0;
+    const getPageScrollY = () => window.scrollY || document.documentElement.scrollTop || document.body.scrollTop || 0;
     const updateTopbarShadow = () => {
-      topbarEl?.classList.toggle("scrolled", window.scrollY > 20);
+      topbarEl?.classList.toggle("scrolled", getPageScrollY() > 20);
       topbarScrollTicking = false;
     };
-    window.addEventListener("scroll", () => {
+    const onAnyScroll = () => {
       if (topbarScrollTicking) return;
       topbarScrollTicking = true;
       window.requestAnimationFrame(updateTopbarShadow);
-    }, { passive: true });
+    };
+    window.addEventListener("scroll", onAnyScroll, { passive: true });
+    document.body.addEventListener("scroll", onAnyScroll, { passive: true });
 
     const observer = new IntersectionObserver((entries) => {
       for (const entry of entries) {
@@ -1482,7 +1565,10 @@
 
     const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
 
-    draggableQuotes.forEach((quote) => {
+    if (isMobileDevice) {
+      draggableQuotes.forEach((quote) => quote.remove());
+    } else {
+      draggableQuotes.forEach((quote) => {
       const getQuoteBounds = () => {
         const pageWidth = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
         const pageHeight = Math.max(document.documentElement.scrollHeight, document.body.scrollHeight);
@@ -1562,8 +1648,10 @@
         stopMomentum();
 
         const rect = quote.getBoundingClientRect();
-        const rectPageLeft = rect.left + window.scrollX;
-        const rectPageTop = rect.top + window.scrollY;
+        const scrollX = getPageScrollX();
+        const scrollY = getPageScrollY();
+        const rectPageLeft = rect.left + scrollX;
+        const rectPageTop = rect.top + scrollY;
 
         if (quote.parentElement !== document.body) {
           document.body.appendChild(quote);
@@ -1575,8 +1663,8 @@
         quote.style.right = "auto";
         quote.style.bottom = "auto";
 
-        const pointerPageX = event.clientX + window.scrollX;
-        const pointerPageY = event.clientY + window.scrollY;
+        const pointerPageX = event.clientX + scrollX;
+        const pointerPageY = event.clientY + scrollY;
         dragState.active = true;
         dragState.pointerId = event.pointerId;
         dragState.offsetX = pointerPageX - rectPageLeft;
@@ -1589,15 +1677,14 @@
 
         quote.style.zIndex = String(++quoteDragZ);
         quote.classList.add("dragging");
-        quote.setPointerCapture(event.pointerId);
       };
 
       const onDragMove = (event) => {
         if (!dragState.active || event.pointerId !== dragState.pointerId) return;
 
         const bounds = getQuoteBounds();
-        const pointerPageX = event.clientX + window.scrollX;
-        const pointerPageY = event.clientY + window.scrollY;
+        const pointerPageX = event.clientX + getPageScrollX();
+        const pointerPageY = event.clientY + getPageScrollY();
         const nextX = clamp(pointerPageX - dragState.offsetX, bounds.minX, bounds.maxX);
         const nextY = clamp(pointerPageY - dragState.offsetY, bounds.minY, bounds.maxY);
 
@@ -1617,16 +1704,16 @@
         if (!dragState.active || event.pointerId !== dragState.pointerId) return;
         dragState.active = false;
         quote.classList.remove("dragging");
-        quote.releasePointerCapture(event.pointerId);
         dragState.pointerId = null;
         startMomentum();
       };
 
       quote.addEventListener("pointerdown", onDragStart);
-      quote.addEventListener("pointermove", onDragMove);
-      quote.addEventListener("pointerup", onDragEnd);
-      quote.addEventListener("pointercancel", onDragEnd);
-    });
+      window.addEventListener("pointermove", onDragMove);
+      window.addEventListener("pointerup", onDragEnd);
+      window.addEventListener("pointercancel", onDragEnd);
+      });
+    }
 
     const lightbox = document.getElementById("imageLightbox");
     const lightboxImage = document.getElementById("imageLightboxImg");
@@ -1684,12 +1771,13 @@
       "Frizk - I Feel Alive - (320 Kbps).mp3",
       "Frizk - mintbeat - (320 Kbps).mp3"
     ];
+    const MUSIC_VOLUME = 0.03;
     const MUSIC_STATE_KEY = "portfolioMusicStateV1";
     const BALL_STATE_KEY = "portfolioBallEnabledV1";
 
     const audio = new Audio();
     audio.preload = "auto";
-    audio.volume = 0.7;
+    audio.volume = MUSIC_VOLUME;
 
     const pauseBtn = document.getElementById("pauseBtn");
     const skipBtn = document.getElementById("skipBtn");
@@ -1744,6 +1832,7 @@
       currentSongIndex = index;
       const songPath = songs[currentSongIndex];
       audio.src = songPath;
+      audio.volume = MUSIC_VOLUME;
 
       if (Number.isFinite(startAt) && startAt > 0) {
         const applyStartTime = () => {
@@ -1784,6 +1873,7 @@
     pauseBtn?.addEventListener("click", async () => {
       if (audio.paused) {
         try {
+          audio.volume = MUSIC_VOLUME;
           await audio.play();
           pauseBtn.textContent = "Pause";
           persistMusicState();
@@ -1825,7 +1915,7 @@
     window.addEventListener("keydown", unlockAudioOnce, { once: true });
 
     const physicsBall = document.getElementById("physicsBall");
-    if (physicsBall) {
+    if (physicsBall && !isMobileDevice) {
       const ballRadius = 37;
       const gravity = 2100;
       const restitution = 0.68;
@@ -2116,6 +2206,12 @@
 
       renderBall();
       ensureBallAnimation();
+    } else if (physicsBall) {
+      physicsBall.style.display = "none";
+      if (ballToggleBtn) {
+        ballToggleBtn.textContent = "Ball: Off";
+        ballToggleBtn.disabled = true;
+      }
     }
 
     const savedMusicState = getSavedMusicState();
