@@ -138,7 +138,7 @@
       top: 0;
       bottom: 0;
       width: var(--sidebar-width);
-      overflow: hidden;
+      overflow: visible;
       z-index: 50;
       background: #0a1730cc;
       backdrop-filter: blur(6px);
@@ -160,6 +160,8 @@
 
     .brand {
       font-weight: 900;
+      font-size: clamp(1.6rem, 2.2vw, 2.05rem);
+      line-height: 1;
       letter-spacing: 1px;
       text-transform: uppercase;
       color: #fff;
@@ -170,18 +172,33 @@
     .brand span { color: var(--main-light); }
 
     .nav-links {
+      position: relative;
       display: flex;
       flex-direction: column;
-      gap: 0.6rem;
+      gap: 0.9rem;
+    }
+
+    .nav-links::before {
+      content: "▼";
+      position: absolute;
+      top: -0.9rem;
+      left: 50%;
+      transform: translateX(-50%);
+      color: #d9ebff;
+      font-size: 1rem;
+      font-weight: 900;
+      text-shadow: 0 2px 0 #102a54;
+      pointer-events: none;
+      animation: pointTag 900ms ease-in-out infinite;
     }
 
     .nav-links a {
       text-decoration: none;
       color: var(--text);
-      padding: 0.45rem 0.75rem;
+      padding: 0.7rem 1rem;
       border: 2px solid var(--line);
       background: #0f2650;
-      font-size: 0.92rem;
+      font-size: 1rem;
       text-align: left;
       transition: transform 120ms ease, background 120ms ease;
     }
@@ -243,6 +260,16 @@
       }
       100% {
         filter: brightness(1.06);
+      }
+    }
+
+    @keyframes pointTag {
+      0%,
+      100% {
+        transform: translateX(-50%) translateY(0);
+      }
+      50% {
+        transform: translateX(-50%) translateY(5px);
       }
     }
 
@@ -1160,6 +1187,10 @@
         justify-content: flex-end;
       }
 
+      .nav-links::before {
+        display: none;
+      }
+
       .hero {
         grid-template-columns: 1fr;
       }
@@ -1237,6 +1268,10 @@
       .nav-links a,
       .brand {
         text-align: center;
+      }
+
+      .brand {
+        font-size: 1.35rem;
       }
 
       .hero {
