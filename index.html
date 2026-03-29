@@ -1552,7 +1552,7 @@
         if (document.body.classList.contains("tag-shift")) return;
 
         const targetPage = secretTagBtn.getAttribute("href") || "secret-tag.html";
-        persistMusicState();
+        rotateSongForNavigation();
         document.body.classList.add("tag-shift");
         window.setTimeout(() => {
           window.location.href = targetPage;
@@ -1823,6 +1823,17 @@
       const cleanName = songPath.replace("Frizk - ", "").replace(" - (320 Kbps).mp3", "");
       nowPlaying.textContent = `Now Playing: ${cleanName} | Creator: Frizk`;
     };
+
+    function rotateSongForNavigation() {
+      const nextIndex = getRandomSongIndex();
+      const state = {
+        index: nextIndex,
+        time: 0,
+        paused: false,
+        updatedAt: Date.now()
+      };
+      localStorage.setItem(MUSIC_STATE_KEY, JSON.stringify(state));
+    }
 
     function persistMusicState() {
       if (currentSongIndex < 0) return;
