@@ -1153,11 +1153,11 @@
     @media (max-width: 900px) {
       body {
         padding-left: 0;
-        padding-top: 74px;
+        padding-top: 0;
       }
 
       .topbar {
-        position: fixed;
+        position: sticky;
         left: 0;
         top: 0;
         right: 0;
@@ -1169,6 +1169,13 @@
 
       .topbar.scrolled {
         box-shadow: 0 6px 18px #00000055;
+      }
+
+      .roblox-quote,
+      .music-controls,
+      .physics-ball,
+      .ball-idle-prompt {
+        display: none !important;
       }
 
       .nav {
@@ -1203,12 +1210,6 @@
     }
 
     @media (max-width: 640px) {
-      .roblox-quote {
-        position: static;
-        max-width: none;
-        margin: 0.45rem 0;
-      }
-
       .grid-3, .grid-2 {
         grid-template-columns: 1fr;
       }
@@ -1378,14 +1379,24 @@
             <p class="review-text">"Responsive, Fast, And Very Friendly"</p>
             <p class="review-score">10/10</p>
           </article>
+          <article class="review-card">
+            <p class="review-user">@subterris</p>
+            <p class="review-text">"it is good ui and fast too also cheaper than alot."</p>
+            <p class="review-score">9.5/10</p>
+          </article>
           <article class="review-card" aria-hidden="true">
             <p class="review-user">@alexanderthegreat6704</p>
             <p class="review-text">"Fine gui, Didn't take too long, made it adapt to my needs"</p>
             <p class="review-score">9.5/10</p>
           </article>
           <article class="review-card" aria-hidden="true">
-            <p class="review-user">@alexanderthegreat6704</p>
-            <p class="review-text">"Fine gui, Didn't take too long, made it adapt to my needs"</p>
+            <p class="review-user">@rinxdim</p>
+            <p class="review-text">"Responsive, Fast, And Very Friendly"</p>
+            <p class="review-score">10/10</p>
+          </article>
+          <article class="review-card" aria-hidden="true">
+            <p class="review-user">@subterris</p>
+            <p class="review-text">"it is good ui and fast too also cheaper than alot."</p>
             <p class="review-score">9.5/10</p>
           </article>
         </div>
