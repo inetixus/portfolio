@@ -700,15 +700,6 @@
       gap: 0.8rem;
     }
 
-    .contact-email {
-      display: inline-flex;
-      align-items: center;
-      padding: 0.6rem 0;
-      color: var(--text);
-      font-weight: 700;
-      font-size: 0.95rem;
-    }
-
     .contact-link {
       display: inline-flex;
       align-items: center;
@@ -721,6 +712,8 @@
       font-weight: 700;
       text-transform: uppercase;
       font-size: 0.9rem;
+      font-family: inherit;
+      cursor: pointer;
       transition: transform 120ms ease, background 120ms ease;
     }
 
@@ -728,6 +721,14 @@
       background: #1a3970;
       transform: translateY(-2px);
     }
+
+    .contact .contact-status {
+      flex-basis: 100%;
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .contact-status:empty { display: none; }
 
     .ticket-form {
       margin: 1rem auto 0;
@@ -739,6 +740,12 @@
       border: 2px solid #5f98f6;
       background: linear-gradient(180deg, #132a52, #0f244a);
       box-shadow: 0 6px 0 #0b1f41;
+    }
+
+    .ticket-form label {
+      display: grid;
+      gap: 0.3rem;
+      font-weight: 700;
     }
 
     .ticket-form input,
@@ -1151,6 +1158,10 @@
     }
 
     @media (max-width: 900px) {
+      main section[id] { scroll-margin-top: 8rem; }
+
+      .contact { padding-bottom: 8rem; }
+
       body {
         padding-left: 0;
         padding-top: 0;
@@ -1210,6 +1221,10 @@
     }
 
     @media (max-width: 640px) {
+      main section[id] { scroll-margin-top: 11rem; }
+
+      .contact { padding-bottom: 12rem; }
+
       .grid-3, .grid-2 {
         grid-template-columns: 1fr;
       }
@@ -1512,16 +1527,17 @@
       <h2 class="section-title fade">Contact Me</h2>
       <p class="fade">Ready to work together? Reach out and tell me what you need for your Roblox game.</p>
       <div class="contact-links fade">
-        <span class="contact-email">inetixus@gmail.com</span>
-        <a class="contact-link" href="https://discord.com" target="_blank">💬 Discord: @inetixus_</a>
-        <a class="contact-link" href="https://www.roblox.com/users/3762792455/profile" target="_blank">🎮 Roblox: megaplayerboi10</a>
+        <a class="contact-link" href="mailto:inetixus@gmail.com">✉ Email: inetixus@gmail.com</a>
+        <button id="copyDiscord" class="contact-link" type="button">💬 Copy Discord: @inetixus_</button>
+        <a class="contact-link" href="https://www.roblox.com/users/3762792455/profile" target="_blank" rel="noopener noreferrer">🎮 Roblox: megaplayerboi10</a>
+        <p id="contactStatus" class="contact-status" role="status" aria-live="polite"></p>
       </div>
 
       <form action="https://formspree.io/f/mbdpgrzl" method="POST" class="ticket-form fade">
-        <input type="text" name="name" placeholder="Your name" required />
-        <input type="email" name="email" placeholder="Your email" required />
-        <input type="text" name="discord" placeholder="Discord username (optional but recommended)" />
-        <textarea name="message" placeholder="What do you need?" required></textarea>
+        <label>Your name<input type="text" name="name" autocomplete="name" required /></label>
+        <label>Your email<input type="email" name="email" autocomplete="email" required /></label>
+        <label>Discord username (optional)<input type="text" name="discord" autocomplete="off" /></label>
+        <label>What do you need?<textarea name="message" required></textarea></label>
         <button type="submit" class="btn">Send Ticket</button>
       </form>
     </section>
@@ -1613,6 +1629,17 @@
     }
 
     const secretTagBtn = document.querySelector(".secret-tag");
+    const copyDiscord = document.getElementById("copyDiscord");
+    const contactStatus = document.getElementById("contactStatus");
+    copyDiscord?.addEventListener("click", async () => {
+      try {
+        await navigator.clipboard.writeText("inetixus_");
+        contactStatus.textContent = "Discord username copied.";
+      } catch {
+        contactStatus.textContent = "Could not copy. Select @inetixus_ above instead.";
+      }
+    });
+
     if (secretTagBtn) {
       secretTagBtn.addEventListener("click", (event) => {
         event.preventDefault();
