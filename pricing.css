@@ -1,0 +1,64 @@
+.reel-sound{display:none!important}
+.hero-note{display:none!important}
+.chart-track{height:auto;padding:40px 0 130px;scroll-margin-top:80px}
+.chart-pin{height:auto;position:relative;top:auto;overflow:visible}
+.chart-labels{display:none}
+.chart-foot.pricing-panel{position:relative;inset:auto;margin:0 var(--gutter);display:block;opacity:1;translate:none;background:linear-gradient(180deg,#05050540,#0505058c 40%,#05050570);padding:60px 0 0}
+.pricing-panel>.chart-h,.pricing-panel>.facts,.pricing-panel>.exit{display:none}
+.pricing-eyebrow,.package-top,.package-scope,.project-process>div>span{font:500 10px var(--mono);letter-spacing:.05em;color:var(--ink-quiet)}
+.pricing-heading{display:grid;grid-template-columns:1.1fr .9fr;gap:24px 90px;align-items:end;margin-bottom:55px}
+.pricing-heading .pricing-eyebrow{grid-column:1/-1}
+.pricing-heading h2{font-size:clamp(42px,5.7vw,84px);font-weight:500;line-height:.99;letter-spacing:-.045em;margin:0}
+.pricing-heading h2 span{color:#8d8d8d}
+.pricing-heading>p:last-child{max-width:37ch;color:var(--ink-body);font-size:17px;line-height:1.6;padding-bottom:4px}
+.package-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border:1px solid #ffffff29;background:#090909e8}
+.package-card{padding:30px clamp(22px,2.5vw,42px);display:flex;flex-direction:column;min-width:0;transition:background .25s}
+.package-card+.package-card{border-left:1px solid #ffffff29}
+.package-card:hover,.package-card:focus-within{background:#121212}
+.package-top{display:flex;justify-content:space-between;gap:18px;align-items:center;margin-bottom:35px;font-size:9px}
+.package-index{color:#bbb}
+.package-card h3{font-size:clamp(22px,2.1vw,33px);font-weight:500;letter-spacing:-.035em;line-height:1.15;margin:0 0 12px}
+.package-description{color:var(--ink-body);font-size:14px;line-height:1.65;max-width:29ch;min-height:69px;margin:0}
+.package-price{display:flex;align-items:baseline;gap:12px;margin:26px 0 28px}
+.package-price strong{font-size:clamp(60px,6vw,88px);font-weight:500;letter-spacing:-.06em;line-height:1}
+.package-price>span{font:500 11px var(--mono);color:#aaa}
+.package-scope{font-size:9px;margin:0 0 15px}
+.package-card ul{padding:0;margin:0 0 32px;list-style:none;display:grid;gap:12px}
+.package-card li{display:flex;gap:11px;color:#b9b9b9;font-size:12px;line-height:1.6}
+.package-card li>span{color:#666;flex:none}
+.package-cta{border-top:1px solid #ffffff29;padding:20px 0 0;display:flex;justify-content:space-between;gap:15px;min-height:55px;align-items:center;margin-top:auto;font-size:13px;text-decoration:none}
+.package-cta>span{font-size:22px;transition:translate .25s}
+.package-cta:hover>span{translate:3px -3px}
+.payment-details{padding:32px 0 40px;border-bottom:1px solid #ffffff29;display:grid;grid-template-columns:1.2fr .8fr;gap:40px 90px}
+.payment-details h3,.project-process h3,.pricing-questions>h3{font-size:18px;font-weight:500;letter-spacing:-.025em;margin:0 0 13px}
+.payment-details p,.project-process p{color:var(--ink-body);font-size:12px;line-height:1.75;max-width:57ch;margin:0}
+.payment-methods{display:flex;flex-wrap:wrap;gap:7px;list-style:none;margin:0 0 16px;padding:0}
+.payment-methods li{padding:5px 9px;border:1px solid #ffffff2b;font:500 9px var(--mono);color:#bababa}
+.revision-note{display:flex;align-items:start;gap:18px;padding-top:3px}
+.revision-note>span{font-size:28px;color:#8e8e8e;line-height:1.2}
+.revision-note p{max-width:39ch}
+.project-process{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:50px;padding:45px 0;border-bottom:1px solid #ffffff29}
+.project-process>div>span{display:block;margin-bottom:19px;font-size:9px}
+.project-process h3{font-size:19px}
+.pricing-questions{display:grid;grid-template-columns:1fr 1.8fr;gap:60px;margin-top:45px}
+.pricing-questions>h3{font-size:23px;letter-spacing:-.035em}
+.pricing-questions details{border-bottom:1px solid #ffffff29}
+.pricing-questions summary{display:flex;justify-content:space-between;gap:25px;list-style:none;cursor:pointer;padding:19px 0;font-size:14px;line-height:1.5}
+.pricing-questions details:first-child summary{padding-top:0}
+.pricing-questions summary::-webkit-details-marker{display:none}
+.pricing-questions summary>span{font-size:20px;color:#999;transition:rotate .2s;line-height:1}
+.pricing-questions details[open] summary>span{rotate:45deg}
+.pricing-questions details[data-expanded="false"] summary>span{rotate:0deg}
+.pricing-questions summary>span{transition:rotate .32s cubic-bezier(.22,1,.36,1)}
+.pricing-questions details>p{color:var(--ink-body);font-size:12px;line-height:1.85;max-width:65ch;margin:0 0 22px}
+.pricing-footer{display:flex;justify-content:space-between;gap:25px;align-items:center;padding-top:45px;font-size:13px}
+.pricing-footer p{color:var(--ink-quiet);margin:0}
+.pricing-footer a{text-decoration:none;display:flex;gap:30px;align-items:center;min-height:44px}
+.package-selection{font:500 12px var(--mono);color:#b8d8dc;margin:0 0 20px;line-height:1.8}
+.package-selection a{font-size:10px;color:#858585;margin-left:20px;text-decoration:underline;text-underline-offset:4px}
+.pricing-panel a:focus-visible,.pricing-panel summary:focus-visible{outline:1px solid #c4ffff;outline-offset:6px}
+.hud-account{min-height:44px;display:inline-flex;align-items:center;gap:9px;font:10px var(--mono);color:#aaa;text-decoration:none;margin-right:12px}.hud-account:hover{color:#fff}.hud-account>span{font-size:17px}.prepare-entry{margin-top:56px;padding:43px 0 40px;border-top:1px solid #ffffff29;border-bottom:1px solid #ffffff29;display:flex;justify-content:space-between;align-items:center;gap:35px;background:#05050570}.prepare-entry .pricing-eyebrow{margin:0 0 18px}.prepare-entry h3{font-size:clamp(35px,4.5vw,62px);line-height:1.03;font-weight:500;letter-spacing:-.045em;margin:0 0 16px}.prepare-entry p:last-child{font-size:13px;color:#a9aaa7;line-height:1.6;max-width:43ch;margin:0}.prepare-actions{min-width:230px;display:grid;gap:18px}.prepare-actions a{display:flex;justify-content:space-between;align-items:center;gap:30px;min-height:44px;font-size:12px}.prepare-actions .prepare-login{padding:0 17px;background:#eeeeeb;color:#0a0a0a;min-height:50px}.prepare-actions a>span{font-size:20px}.pricing-heading,.payment-details,.project-process,.pricing-questions,.pricing-footer{text-shadow:0 1px 15px #000}
+@media(max-width:700px){.hud-account{font-size:9px;margin-right:0;gap:5px}.hud-status{display:none}.prepare-entry{display:block;padding:32px 0;margin-top:36px}.prepare-actions{margin-top:30px;max-width:350px;min-width:0}.prepare-entry p:last-child{font-size:12px}.prepare-entry h3{font-size:42px}}
+@media(max-width:1000px){.pricing-heading{gap:24px 40px}.package-card{padding:26px 22px}.package-description{min-height:93px}.package-top{font-size:8px;gap:10px}.payment-details{gap:40px}.project-process{gap:30px}.pricing-questions{gap:35px}}
+@media(max-width:700px){.chart-track{padding-bottom:75px}.chart-foot.pricing-panel{padding-top:35px}.pricing-heading{grid-template-columns:1fr;gap:22px;margin-bottom:35px}.pricing-heading h2{font-size:52px}.pricing-heading>p:last-child{font-size:14px;max-width:35ch}.package-grid{grid-template-columns:1fr}.package-card{padding:26px}.package-card+.package-card{border-left:0;border-top:1px solid #ffffff29}.package-top{font-size:9px;margin-bottom:25px}.package-card h3{font-size:28px}.package-description{min-height:0;max-width:34ch;font-size:13px}.package-price{margin-top:24px;margin-bottom:25px}.package-price strong{font-size:72px}.package-card ul{margin-bottom:22px}.package-card li{font-size:12px}.payment-details{grid-template-columns:1fr;gap:30px;padding-bottom:32px}.payment-methods li{font-size:8px}.payment-details p{font-size:12px}.project-process{grid-template-columns:1fr;gap:28px;padding:35px 0}.project-process>div>span{margin-bottom:12px}.project-process p{max-width:40ch}.pricing-questions{grid-template-columns:1fr;gap:16px;margin-top:35px}.pricing-questions>h3{font-size:25px}.pricing-questions summary{font-size:13px;padding:18px 0}.pricing-questions details:first-child summary{padding-top:18px}.pricing-footer{align-items:start;flex-direction:column;gap:8px;padding-top:30px;font-size:12px}.package-selection{font-size:10px}.package-selection a{display:block;margin:8px 0 0}}
+@media(prefers-reduced-motion:reduce){.package-card,.package-cta>span,.pricing-questions summary>span{transition:none}}

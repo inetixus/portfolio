@@ -1,0 +1,35 @@
+{
+ "source": "officeChair.obj",
+ "meshes": [
+  {
+   "name": "Office Chair.Part1",
+   "path": "Workspace.Office Chair.Part",
+   "objGroup": "Part1",
+   "texture": "tex/Part1_diff.png",
+   "color": [
+    0.06666667014360428,
+    0.06666667014360428,
+    0.06666667014360428
+   ],
+   "material": "Plastic",
+   "vertexCount": 1764,
+   "indexCount": 6957,
+   "position": {
+    "offset": 0,
+    "length": 5292
+   },
+   "normal": {
+    "offset": 21168,
+    "length": 5292
+   },
+   "uv": {
+    "offset": 42336,
+    "length": 3528
+   },
+   "index": {
+    "offset": 56448,
+    "length": 6957
+   }
+  }
+ ]
+}

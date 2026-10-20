@@ -1,0 +1,341 @@
+{
+  "projects": [
+    {
+      "id": "shop-gui",
+      "key": "shop",
+      "idx": "01",
+      "label": "Shop GUI",
+      "h3": "A custom shop GUI, made for the game.",
+      "result": "A clean Roblox shop interface, fully styled to match the in-game aesthetic.",
+      "notes": [
+        "Custom interface design",
+        "Game-matching visual style",
+        "Shop layout"
+      ],
+      "w": 1529,
+      "h": 711,
+      "fit": "contain",
+      "src": "https://www.youtube.com/@inetixus",
+      "details": [
+        [
+          "My part",
+          [
+            "GUI design, layout, and visual styling."
+          ]
+        ],
+        [
+          "The project",
+          [
+            "A custom shop interface with blue accents, metallic panels, and space for in-game items."
+          ]
+        ]
+      ],
+      "images": [
+        "/assets/shop.png"
+      ]
+    },
+    {
+      "id": "map-build",
+      "key": "map",
+      "idx": "02",
+      "label": "Map Build",
+      "h3": "A world built from an empty baseplate.",
+      "result": "A Roblox map built from scratch, exploring environment layout and building.",
+      "notes": [
+        "Built from scratch",
+        "Environment layout",
+        "Roblox Studio"
+      ],
+      "w": 1920,
+      "h": 1080,
+      "fit": "contain",
+      "src": "https://www.youtube.com/@inetixus",
+      "details": [
+        [
+          "My part",
+          [
+            "The original map build and environment layout."
+          ]
+        ],
+        [
+          "The project",
+          [
+            "An early building project in Roblox Studio."
+          ]
+        ]
+      ],
+      "images": [
+        "/assets/map.png"
+      ]
+    },
+    {
+      "id": "tag",
+      "key": "tag",
+      "idx": "03",
+      "label": "<TAG>",
+      "h3": "A voting system. The interface and the code.",
+      "result": "Advanced map voting with a custom GUI and settings interface, built together.",
+      "notes": [
+        "Custom map voting",
+        "Settings interface",
+        "GUI and scripting"
+      ],
+      "w": 1981,
+      "h": 675,
+      "fit": "contain",
+      "src": "https://www.youtube.com/@inetixus",
+      "details": [
+        [
+          "My part",
+          [
+            "Custom GUI design and the voting system scripting."
+          ]
+        ],
+        [
+          "The project",
+          [
+            "Map voting, custom controls, and an in-game settings interface."
+          ]
+        ]
+      ],
+      "images": [
+        "/assets/tag1.png",
+        "/assets/tag2.png"
+      ]
+    }
+  ],
+  "office": {
+    "lead": "I build GUIs and scripts for Roblox.",
+    "copy": "I design game-matching interfaces and script the features behind them, from a focused shop screen to connected menus and basic gameplay systems. My work also includes early environment builds and simple VFX. Send your references and the features your players need, and we’ll define a clear scope together.",
+    "stats": [
+      {
+        "v": "200",
+        "k": "Robux · Basic GUI"
+      },
+      {
+        "v": "300",
+        "k": "Robux · Advanced GUI"
+      },
+      {
+        "v": "450",
+        "k": "Robux · Basic script system"
+      }
+    ],
+    "span": {
+      "a": "<i>200 Robux</i> · basic GUI",
+      "b": "full basic system · <i>450 Robux</i>",
+      "peak": "450",
+      "peakSub": "Robux · full basic system"
+    },
+    "exit": {
+      "href": "mailto:inetixus@gmail.com",
+      "label": "Discuss your project"
+    }
+  },
+  "chart": {
+    "t0": "2026-01-01",
+    "t1": "2026-04-01",
+    "top": 450,
+    "seed": 200,
+    "rise": [
+      [
+        20,
+        200
+      ],
+      [
+        26,
+        300
+      ],
+      [
+        28,
+        300
+      ]
+    ],
+    "crest": [
+      32,
+      450
+    ],
+    "tailFrom": 33,
+    "tail": [
+      450,
+      450,
+      450,
+      450,
+      450,
+      450,
+      450,
+      450,
+      450,
+      450,
+      450,
+      450,
+      450,
+      450,
+      450,
+      450,
+      450,
+      450,
+      450,
+      450,
+      450,
+      450,
+      450,
+      450,
+      450,
+      450,
+      450,
+      450,
+      450,
+      450,
+      450,
+      450,
+      450,
+      450,
+      450,
+      450,
+      450,
+      450,
+      450,
+      450,
+      450,
+      450,
+      450,
+      450,
+      450,
+      450,
+      450,
+      450,
+      450,
+      450,
+      450,
+      450,
+      450,
+      450,
+      450,
+      450,
+      450,
+      450,
+      450,
+      450,
+      450,
+      450,
+      450,
+      450,
+      450,
+      450,
+      450,
+      450,
+      450,
+      450,
+      450,
+      450,
+      450,
+      450,
+      450,
+      450,
+      450,
+      450,
+      450,
+      450,
+      450,
+      450,
+      450,
+      450,
+      450,
+      450,
+      450,
+      450,
+      450,
+      450,
+      450,
+      450,
+      450,
+      450,
+      450,
+      450,
+      450,
+      450,
+      450,
+      450,
+      450,
+      450,
+      450,
+      450,
+      450,
+      450,
+      450,
+      450,
+      450,
+      450,
+      450,
+      450,
+      450,
+      450,
+      450,
+      450,
+      450,
+      450,
+      450,
+      450,
+      450,
+      450
+    ]
+  },
+  "reel": [
+    {
+      "id": "shop",
+      "a": 2.150492264416315,
+      "title": "Shop GUI",
+      "channel": "Inetixus",
+      "avatar": "/assets/avatar.png",
+      "image": "/assets/shop.png"
+    },
+    {
+      "id": "map",
+      "a": 1.7777777777777777,
+      "title": "Map Build",
+      "channel": "Inetixus",
+      "avatar": "/assets/avatar.png",
+      "image": "/assets/map.png"
+    },
+    {
+      "id": "tag",
+      "a": 2.934814814814815,
+      "title": "<TAG>",
+      "channel": "Inetixus",
+      "avatar": "/assets/avatar.png",
+      "image": "/assets/tag1.png"
+    }
+  ],
+  "award": {
+    "title": "What players have said.",
+    "by": "Player reviews",
+    "href": "https://inetixus.vercel.app/",
+    "post": "https://inetixus.vercel.app/",
+    "ballot": 3,
+    "finalists": 3,
+    "judges": [
+      {
+        "name": "@alexanderthegreat6704",
+        "of": "9.5/10",
+        "x": "https://inetixus.vercel.app/",
+        "img": "/site/avatars/review-0.svg"
+      },
+      {
+        "name": "@rinxdim",
+        "of": "10/10",
+        "x": "https://inetixus.vercel.app/",
+        "img": "/site/avatars/review-1.svg"
+      },
+      {
+        "name": "@subterris",
+        "of": "9.5/10",
+        "x": "https://inetixus.vercel.app/",
+        "img": "/site/avatars/review-2.svg"
+      }
+    ],
+    "quote": "Responsive, Fast, And Very Friendly",
+    "logo": "/site/inetixus-icon.svg",
+    "quoteBy": "@rinxdim · player review"
+  }
+}
