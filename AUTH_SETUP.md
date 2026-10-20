@@ -1,14 +1,36 @@
-# Connect real accounts later
+# Authentication setup
 
-The current `/login/`, `/signup/`, and `/forgot-password/` routes are UI previews. Their forms validate input locally, display a clear preview message, and never transmit or persist credentials. Google is a preview button. No authentication provider or user database has been installed.
+Supabase project: https://aocfndxbjmnqmfyoqjfz.supabase.co
+Production: https://inetixus.it
 
-To enable accounts, provide:
+Google and email authentication are connected using the official Supabase browser SDK. Only the project URL and publishable key are in auth-config.js. Google secrets must remain in Supabase's Google provider settings. Do not commit the downloaded Google OAuth JSON.
 
-1. **An authentication provider and project.** A suitable option is Supabase Auth, which supports Google and email/password. If using it, provide the project URL and publishable browser key, or access to configure the project. Do not put a service-role key in frontend files.
-2. **A Google Cloud OAuth project.** Enable a web OAuth client with `https://inetixus.it` as an authorized origin. The redirect URI comes from the chosen authentication provider. Its client secret belongs in the provider's settings, not in GitHub or these static pages.
-3. **An email sender.** Choose the sender address and transactional email service for verification and password resets. Configure its credentials privately in the provider or deployment environment.
-4. **The signed-in destination.** Decide whether clients land on a project brief, a dashboard, or another page. No authenticated dashboard is included in this UI-only change.
+## Configured redirects
 
-Production domain: `https://inetixus.it`. Local development: `http://127.0.0.1:4173`. Provider redirects and callbacks must be configured once the provider is selected; no fake callback route is deployed today.
+Supabase Authentication > URL Configuration:
+- Site URL: https://inetixus.it
+- Redirect URLs: https://inetixus.it/auth/callback/ and https://inetixus.it/reset-password/
 
-References: [Supabase Google setup](https://supabase.com/docs/guides/auth/social-login/auth-google), [email and password setup](https://supabase.com/docs/guides/auth/passwords), [redirect URL configuration](https://supabase.com/docs/guides/auth/redirect-urls).
+Google Cloud web OAuth client:
+- Authorized JavaScript origin: https://inetixus.it
+- Authorized redirect URI: https://aocfndxbjmnqmfyoqjfz.supabase.co/auth/v1/callback
+
+Local testing with a real account requires adding the corresponding localhost return routes to the Supabase allowlist. Browser QA intercepts Auth responses instead and never sends real signup or reset emails.
+
+## Behavior
+
+/login/ supports Google OAuth with PKCE and email/password. /signup/ stores the supplied display name in Auth user metadata and requests confirmation email. Open confirmation and recovery links in the same browser where they were requested, because PKCE verifies that browser. /auth/callback/ completes sign-in, and /account/ verifies the user with Supabase Auth before displaying identity. Session tokens are persisted by the SDK for refresh and returning visits. Logout removes this browser's session. /forgot-password/ sends a recovery email; /reset-password/ updates the password after session verification.
+
+No database tables or client dashboard data are included. Future client records need server authorization and Row Level Security policies.
+
+## Before opening signups to everyone
+
+1. Configure custom SMTP in Supabase for confirmation and reset emails to public users. The default Supabase sender is restricted to project-team recipients and is for testing. Store SMTP credentials in Supabase, not this repository.
+2. The supplied Google screenshot showed the OAuth app in Testing mode. Add your test email under Google Auth Platform > Audience while testing; publish the Google OAuth app when ready for public sign-in.
+3. Rotate the Google client secret shown in the supplied screenshot and update the provider if this has not been done.
+
+## Verification
+
+qa-auth.mjs uses the actual SDK with intercepted Auth responses for signup, mismatched passwords, invalid credentials, successful login, session persistence, getUser identity verification, logout, unauthenticated guards, recovery code exchange, password update, Google PKCE and callback failures at desktop, 390 px and 320 px. Live provider settings and the Google authorization redirect are checked separately. Real Google consent and email delivery still require a user test.
+
+References: [Google provider](https://supabase.com/docs/guides/auth/social-login/auth-google), [PKCE](https://supabase.com/docs/guides/auth/sessions/pkce-flow), [SMTP](https://supabase.com/docs/guides/auth/auth-smtp).
