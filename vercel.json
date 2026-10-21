@@ -162,7 +162,7 @@
           "value": "inetixus.it"
         }
       ],
-      "destination": "https://dashboard.inetixus.it/:path*",
+      "destination": "https://dashboard.inetixus.it/dashboard/:path*",
       "permanent": false
     },
     {
@@ -173,7 +173,7 @@
           "value": "www.inetixus.it"
         }
       ],
-      "destination": "https://dashboard.inetixus.it/:path*",
+      "destination": "https://dashboard.inetixus.it/dashboard/:path*",
       "permanent": false
     }
   ],
