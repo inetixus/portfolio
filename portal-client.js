@@ -1,5 +1,5 @@
-import {createClient} from './assets/supabase-client.js?v=portal-3';
-import {supabaseUrl,supabasePublishableKey} from './auth-config.js?v=portal-3';
+import {createClient} from './assets/supabase-client.js?v=portal-4';
+import {supabaseUrl,supabasePublishableKey} from './auth-config.js?v=portal-4';
 export const client=createClient(supabaseUrl,supabasePublishableKey,{auth:{flowType:'pkce',persistSession:true,autoRefreshToken:true,detectSessionInUrl:true}});
 const local=['localhost','127.0.0.1'].includes(location.hostname)||location.hostname.endsWith('.chatgpt.site');
 export const portalOrigin=local?location.origin:'https://dashboard.inetixus.it';

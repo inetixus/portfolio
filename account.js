@@ -1,4 +1,4 @@
-import {client,portalOrigin,portalHome,portalUrl,portfolioUrl} from './portal-client.js?v=portal-3';
+import {client,portalOrigin,portalHome,portalUrl,portfolioUrl} from './portal-client.js?v=portal-4';
 const mode=document.body.dataset.accountPage,form=document.querySelector('[data-account-form]'),status=document.querySelector('.form-status');
 const say=(text,error=false)=>{status.textContent=text;status.hidden=false;status.dataset.error=String(error);status.focus({preventScroll:true});};
 const local=['localhost','127.0.0.1'].includes(location.hostname)||location.hostname.endsWith('.chatgpt.site');
