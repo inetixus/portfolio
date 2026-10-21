@@ -14,3 +14,4 @@
  .divider{font-size:11px;margin:22px 0}.submit-button{margin-top:24px}.hint{font-size:12px;line-height:1.6}.account-switch{font-size:14px;gap:4px 12px;margin-top:18px}.account-switch>a{min-height:44px}.preview-note{font-size:11px;line-height:1.65;margin-top:20px}.form-status{font-size:14px;overflow-wrap:anywhere}.selected-package{font-size:12px}
  .account-footer{margin-inline:20px;gap:12px;min-height:76px;padding-bottom:env(safe-area-inset-bottom);font-size:11px}.account-footer>a{min-height:48px}.account-footer>span{display:none}
 }
+.resend-code{min-height:48px;margin-top:14px;font-size:14px;color:#b8c8bf;text-decoration:underline;text-underline-offset:5px}.resend-code:disabled{opacity:.5;cursor:default}#verification-code{font-family:JetBrains,monospace;font-size:24px;letter-spacing:.2em}

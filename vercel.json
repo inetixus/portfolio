@@ -1,0 +1,228 @@
+{
+  "redirects": [
+    {
+      "source": "/login/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "inetixus.it"
+        }
+      ],
+      "destination": "https://dashboard.inetixus.it/login/:path*",
+      "permanent": false
+    },
+    {
+      "source": "/signup/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "inetixus.it"
+        }
+      ],
+      "destination": "https://dashboard.inetixus.it/signup/:path*",
+      "permanent": false
+    },
+    {
+      "source": "/verify-email/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "inetixus.it"
+        }
+      ],
+      "destination": "https://dashboard.inetixus.it/verify-email/:path*",
+      "permanent": false
+    },
+    {
+      "source": "/forgot-password/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "inetixus.it"
+        }
+      ],
+      "destination": "https://dashboard.inetixus.it/forgot-password/:path*",
+      "permanent": false
+    },
+    {
+      "source": "/reset-password/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "inetixus.it"
+        }
+      ],
+      "destination": "https://dashboard.inetixus.it/reset-password/:path*",
+      "permanent": false
+    },
+    {
+      "source": "/account/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "inetixus.it"
+        }
+      ],
+      "destination": "https://dashboard.inetixus.it/account/:path*",
+      "permanent": false
+    },
+    {
+      "source": "/auth/callback/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "inetixus.it"
+        }
+      ],
+      "destination": "https://dashboard.inetixus.it/auth/callback/:path*",
+      "permanent": false
+    },
+    {
+      "source": "/login/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.inetixus.it"
+        }
+      ],
+      "destination": "https://dashboard.inetixus.it/login/:path*",
+      "permanent": false
+    },
+    {
+      "source": "/signup/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.inetixus.it"
+        }
+      ],
+      "destination": "https://dashboard.inetixus.it/signup/:path*",
+      "permanent": false
+    },
+    {
+      "source": "/verify-email/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.inetixus.it"
+        }
+      ],
+      "destination": "https://dashboard.inetixus.it/verify-email/:path*",
+      "permanent": false
+    },
+    {
+      "source": "/forgot-password/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.inetixus.it"
+        }
+      ],
+      "destination": "https://dashboard.inetixus.it/forgot-password/:path*",
+      "permanent": false
+    },
+    {
+      "source": "/reset-password/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.inetixus.it"
+        }
+      ],
+      "destination": "https://dashboard.inetixus.it/reset-password/:path*",
+      "permanent": false
+    },
+    {
+      "source": "/account/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.inetixus.it"
+        }
+      ],
+      "destination": "https://dashboard.inetixus.it/account/:path*",
+      "permanent": false
+    },
+    {
+      "source": "/auth/callback/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.inetixus.it"
+        }
+      ],
+      "destination": "https://dashboard.inetixus.it/auth/callback/:path*",
+      "permanent": false
+    },
+    {
+      "source": "/dashboard/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "inetixus.it"
+        }
+      ],
+      "destination": "https://dashboard.inetixus.it/:path*",
+      "permanent": false
+    },
+    {
+      "source": "/dashboard/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.inetixus.it"
+        }
+      ],
+      "destination": "https://dashboard.inetixus.it/:path*",
+      "permanent": false
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "dashboard.inetixus.it"
+        }
+      ],
+      "destination": "/dashboard/index.html"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "dashboard.inetixus.it"
+        }
+      ],
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        }
+      ]
+    },
+    {
+      "source": "/sitemap.xml",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/xml; charset=utf-8"
+        }
+      ]
+    },
+    {
+      "source": "/(account.js|portal-client.js|dashboard.js|dashboard.css|mobile.js|mobile.css)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=0, must-revalidate"
+        }
+      ]
+    }
+  ],
+  "trailingSlash": true
+}

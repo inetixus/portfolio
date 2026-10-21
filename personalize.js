@@ -9,3 +9,5 @@ const sound=document.querySelector('.reel-sound');if(sound)sound.hidden=true;
 const style=document.createElement('style');
 style.textContent='.hero-name{width:clamp(226px,24.2vw,453px)}';
 document.head.appendChild(style);
+
+if(['localhost','127.0.0.1'].includes(location.hostname)||location.hostname.endsWith('.chatgpt.site')){const link=document.querySelector('.hud-account');if(link)link.href='/login/';}

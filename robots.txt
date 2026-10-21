@@ -1,4 +1,11 @@
 User-agent: *
 Allow: /
-
+Disallow: /dashboard/
+Disallow: /account/
+Disallow: /auth/
+Disallow: /login/
+Disallow: /signup/
+Disallow: /verify-email/
+Disallow: /forgot-password/
+Disallow: /reset-password/
 Sitemap: https://inetixus.it/sitemap.xml
