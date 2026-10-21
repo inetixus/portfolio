@@ -1,5 +1,5 @@
-import {createClient} from './assets/supabase-client.js?v=elevator-1';
-import {supabaseUrl,supabasePublishableKey} from './auth-config.js?v=elevator-1';
+import {createClient} from './assets/supabase-client.js?v=native-edge-1';
+import {supabaseUrl,supabasePublishableKey} from './auth-config.js?v=native-edge-1';
 const mode=document.body.dataset.accountPage;
 const form=document.querySelector('[data-account-form]');
 const status=document.querySelector('.form-status');
