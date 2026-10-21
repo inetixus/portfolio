@@ -1,4 +1,4 @@
-import {P as InstancedBufferGeometry,O as Float32BufferAttribute,N as InstancedBufferAttribute,lt as ShaderMaterial,W as Mesh,ht as TextureLoader,xt as Vector3} from './main-B69lUpv3.js?v=lit-edge-1';
+import {P as InstancedBufferGeometry,O as Float32BufferAttribute,N as InstancedBufferAttribute,lt as ShaderMaterial,W as Mesh,ht as TextureLoader,xt as Vector3} from './main-B69lUpv3.js?v=cube-edges-1';
 
 export function softBox(w,h,d,BoxGeometry){
  const radius=Math.min(.075,Math.min(w,h,d)*.055),g=new BoxGeometry(w,h,d,4,4,4),p=g.attributes.position,n=g.attributes.normal;
