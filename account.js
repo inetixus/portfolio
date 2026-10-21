@@ -1,5 +1,5 @@
-import {createClient} from './assets/supabase-client.js?v=cube-edges-1';
-import {supabaseUrl,supabasePublishableKey} from './auth-config.js?v=cube-edges-1';
+import {createClient} from './assets/supabase-client.js?v=mobile-ui-2';
+import {supabaseUrl,supabasePublishableKey} from './auth-config.js?v=mobile-ui-2';
 const mode=document.body.dataset.accountPage;
 const form=document.querySelector('[data-account-form]');
 const status=document.querySelector('.form-status');

@@ -1,0 +1,40 @@
+/* Mobile refinements keep the desktop composition and live scene intact. */
+.mobile-menu-toggle{display:none}.mobile-nav[hidden]{display:none}
+@media(max-width:760px){
+ html{scrollbar-gutter:auto;scroll-padding-top:84px}
+ :root{--gutter:max(20px,env(safe-area-inset-left),env(safe-area-inset-right));--mobile-wordmark:clamp(156px,46vw,210px)}
+ .hud{gap:12px;padding:calc(env(safe-area-inset-top,0px) + 8px) var(--gutter) 8px;min-height:64px;background:linear-gradient(#050505ed,#050505ad 75%,transparent)}
+ .hud .hud-mark{opacity:1;visibility:visible;margin-right:0;transition:none;min-width:78px;flex-shrink:0}.hud-mark img{width:86px;height:auto}
+ .hud .hud-account,.hud .hud-count,.hud .hud-status{display:none}
+ .hud-dm{margin-left:auto;font-size:13px;gap:6px;min-height:48px;white-space:nowrap}
+ .mobile-menu-toggle{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-width:56px;min-height:48px;font-size:13px;color:#fff}
+ .mobile-menu-toggle span{font-size:20px;line-height:1;transition:transform .2s}.mobile-menu-toggle[aria-expanded=true] span{transform:rotate(45deg)}
+ .mobile-nav{position:fixed;z-index:40;top:calc(env(safe-area-inset-top,0px) + 64px);left:0;right:0;padding:12px var(--gutter) 20px;background:#090909fa;border-bottom:1px solid #ffffff35;box-shadow:0 22px 40px #0009;max-height:calc(100dvh - 80px);overflow:auto}
+ .mobile-nav a{display:flex;justify-content:space-between;align-items:center;min-height:56px;border-bottom:1px solid #ffffff1f;text-decoration:none;font-size:20px;letter-spacing:-.02em}.mobile-nav a:last-child{border-bottom:0;color:#b8c6c2;font-size:16px}.mobile-nav a span{font-size:18px;color:#aaa}
+ body .hero-name{width:var(--mobile-wordmark);top:calc(env(safe-area-inset-top,0px) + 82px)}
+ .hero-award{top:calc(env(safe-area-inset-top,0px) + 82px + var(--mobile-wordmark) * .305 + 12px);font-size:11px;line-height:1.6}
+ .hero-slogan{font-size:clamp(34px,8.7vw,52px);line-height:.99;bottom:calc(env(safe-area-inset-bottom,0px) + 48px);max-width:calc(100% - 2 * var(--gutter));width:max-content}
+ .intro-title{font-size:clamp(27px,7vw,40px);line-height:1.08}
+ .piece{bottom:calc(env(safe-area-inset-bottom,0px) + 20px)}
+ .piece h3{font-size:clamp(26px,7vw,36px);line-height:1.06;margin-bottom:12px}.piece .result{font-size:15px;line-height:1.5;margin-bottom:14px}.piece .proof{font-size:12px;margin-bottom:12px}
+ .piece-ctl{display:flex;gap:4px 18px;align-items:center}.piece .watch,.piece .tech{min-height:48px;font-size:14px}.notes-list{font-size:12px;line-height:1.5}
+ .tech-panel dl{max-height:min(22svh,180px)}.tech-panel dt{font-size:11px}.tech-panel dd{font-size:14px}
+ .office-head{margin-bottom:56px}.office h2{font-size:clamp(32px,8vw,46px)}.office-body{font-size:16px;line-height:1.6}.quick{padding-bottom:64px}.reel{--reel-h:clamp(180px,32svh,280px)}
+ .chart-track{scroll-margin-top:70px}.chart-foot.pricing-panel{padding-top:24px}.pricing-heading h2{font-size:clamp(38px,10.5vw,54px)}.pricing-heading>p:last-child{font-size:16px;line-height:1.55}
+ .package-card{padding:24px 22px}.package-top,.pricing-eyebrow,.package-scope{font-size:11px}.package-description{font-size:15px;line-height:1.55}.package-card li{font-size:14px;line-height:1.55}.package-price strong{font-size:68px}.package-price>span{font-size:13px}.package-cta{font-size:15px;min-height:56px}
+ .payment-methods li{font-size:11px;line-height:1.5}.payment-details p,.project-process p,.prepare-entry p:last-child{font-size:14px;line-height:1.65}.project-process>div>span{font-size:11px}
+ .pricing-questions summary{font-size:16px;line-height:1.4;min-height:64px;gap:16px}.pricing-questions details p{font-size:14px;line-height:1.7}.pricing-footer{font-size:14px}.pricing-footer a{display:flex;align-items:center;min-height:48px}
+ .prepare-entry h3{font-size:clamp(34px,9vw,46px)}.prepare-actions{max-width:none}.prepare-actions a{font-size:15px;min-height:52px}.package-selection{font-size:12px;line-height:1.6}.package-selection a{min-height:44px;display:flex;align-items:center;margin-top:2px}
+ .contact{gap:40px}.contact h2{font-size:clamp(40px,11vw,62px);margin-bottom:28px}.dm{font-size:17px;line-height:1.5;margin-bottom:28px}.cta{width:100%;gap:12px}.cta-main{padding:20px 16px;gap:8px 16px}.cta-label{font-size:23px;line-height:1.12}.cta-sub{font-size:13px;line-height:1.5}.cta-alt{white-space:normal;line-height:1.6;min-height:48px}.dm-status{font-size:14px;overflow-wrap:anywhere}.foot{gap:8px;font-size:12px}.foot a{display:flex;align-items:center;min-height:44px}
+ .pl-title{font-size:14px;flex-wrap:wrap;gap:4px 10px}.pl-close{min-width:48px;min-height:48px}.pl-stage{padding-top:max(12px,env(safe-area-inset-top));padding-bottom:max(12px,env(safe-area-inset-bottom))}.pl-btn{min-height:48px}
+}
+@media(max-width:760px) and (max-height:600px){
+ body .hero-name{width:140px;top:76px}.hero-award{top:132px;font-size:10px}.hero-slogan{font-size:32px;bottom:24px}.hero-slogan span{display:inline}.piece h3{font-size:24px;margin-bottom:8px}.piece .result{font-size:13px;margin-bottom:6px}.piece .notes-list{display:none}.piece{bottom:12px}.piece .watch,.piece .tech{font-size:13px;min-height:44px}.tech-panel dl{max-height:90px}
+}
+@media(prefers-reduced-motion:reduce){.mobile-menu-toggle span{transition:none}}
+@media(min-width:701px) and (max-width:760px){.pricing-heading,.package-grid,.payment-details,.project-process,.pricing-questions{grid-template-columns:1fr}.package-card+.package-card{border-left:0;border-top:1px solid #ffffff29}.package-description{min-height:0}.pricing-heading{gap:22px}.prepare-entry{display:block}.prepare-actions{margin-top:24px;min-width:0}}
+@media(max-width:760px) and (orientation:landscape){.piece{top:50%;bottom:auto;translate:0 -50%;width:40vw}.piece .proof{display:none}}
+@media(max-width:760px){
+ .package-card{padding:20px}.package-top{margin-bottom:16px;font-size:10px}.package-card h3{font-size:25px;margin-bottom:8px}.package-description{font-size:14px;line-height:1.5}.package-price{gap:9px;margin:16px 0}.package-price strong{font-size:44px;letter-spacing:-.045em}.package-price>span{font-size:12px}.package-scope{font-size:10px;margin-bottom:10px}.package-card ul{gap:8px;margin-bottom:16px}.package-card li{font-size:13px;line-height:1.5}.package-cta{font-size:14px;min-height:48px;padding-top:12px}.pricing-heading{margin-bottom:24px}.pricing-heading h2{font-size:clamp(36px,9.5vw,48px)}
+ .aw-side{display:none}.aw-copy{padding-top:0}.award.aw{padding:64px 0}.aw-in{grid-template-columns:minmax(0,1fr)}
+}

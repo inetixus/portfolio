@@ -6,3 +6,11 @@
 @media(max-width:760px){.account-header{height:82px;margin:0 24px}.account-header img{width:108px}.back-link{font-size:11px;gap:12px}.account-layout{display:block;min-height:calc(100svh - 164px)}.account-panel{padding:46px 24px 40px;max-width:510px;margin:auto}.account-art{display:none}h1{font-size:58px}.account-intro{font-size:14px}.eyebrow{margin-bottom:26px}.account-footer{margin:0 24px;min-height:82px;font-size:8px}.account-switch{font-size:12px}.preview-note{font-size:8px}.field input{font-size:16px}}
 @media(max-width:360px){h1{font-size:49px}.account-header,.account-footer{margin-right:20px;margin-left:20px}.account-panel{padding-right:20px;padding-left:20px}.back-link{font-size:10px;gap:7px}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}.art-cube{will-change:auto}}
+@media(max-width:760px){
+ .account-header{height:76px;margin-inline:max(20px,env(safe-area-inset-left)) max(20px,env(safe-area-inset-right))}.account-header img{width:100px}.back-link{font-size:12px;gap:10px;min-height:48px}
+ .account-layout{min-height:calc(100svh - 158px)}.account-panel{padding:30px max(20px,env(safe-area-inset-right)) 32px max(20px,env(safe-area-inset-left))}
+ h1{font-size:clamp(40px,11.5vw,56px);line-height:1.02;overflow-wrap:normal}.eyebrow{font-size:11px;margin-bottom:22px}.account-intro{font-size:16px;line-height:1.55;margin-bottom:26px}
+ .google-button,.submit-button{min-height:54px;font-size:15px}.field{margin-top:20px}.field>label{font-size:12px}.field input{height:54px;font-size:16px}.show-password{height:54px;min-width:56px;font-size:11px}.forgot{display:flex;align-items:center;min-height:44px;font-size:14px;margin:8px 0 12px auto}
+ .divider{font-size:11px;margin:22px 0}.submit-button{margin-top:24px}.hint{font-size:12px;line-height:1.6}.account-switch{font-size:14px;gap:4px 12px;margin-top:18px}.account-switch>a{min-height:44px}.preview-note{font-size:11px;line-height:1.65;margin-top:20px}.form-status{font-size:14px;overflow-wrap:anywhere}.selected-package{font-size:12px}
+ .account-footer{margin-inline:20px;gap:12px;min-height:76px;padding-bottom:env(safe-area-inset-bottom);font-size:11px}.account-footer>a{min-height:48px}.account-footer>span{display:none}
+}
