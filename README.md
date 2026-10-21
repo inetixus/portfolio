@@ -25,4 +25,5 @@ Edit site-content.json for projects, reviews, screenshots and rates. Packages re
 npm run check verifies JavaScript. qa-native-edge.mjs checks the precise head translation and otherwise unchanged hero geometry and scene, and compares every elevator vertex against the native OBJ. Browser checks cover the large live hero, tiny constant widget size, viewport visibility, scroll progress, door sequencing, reversals, reduced motion and overflow. qa-polish.mjs covers original pose/crown/camera and FAQ interactions; qa-pricing.mjs covers package and contact behavior.
 
 
-Mobile layouts now have compact navigation, touch-friendly controls, readable forms, smaller pricing cards, and a wider avatar camera view. The mobile 3D <I> mark is hidden and the side light is larger.
+Mobile layouts now have compact navigation, touch-friendly controls, readable forms, smaller pricing cards, and a face and upper torso close-up. The mobile 3D <I> mark is hidden and the side light is larger.
+
